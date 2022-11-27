@@ -5,7 +5,10 @@ class ItinerariesController < ApplicationController
   end
 
   def create
-
+    @itinerary = Itinerary.new(itinerary_params)
+    @itinerary.user = current_user
+    @itinerary.save
+    redirect_to itinerary_path(@itinerary)
   end
 
   def index
