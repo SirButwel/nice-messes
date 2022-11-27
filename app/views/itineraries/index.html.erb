@@ -1,0 +1,7 @@
+<h1>ITINERARIES LIST</h1>
+
+<% @itineraries.each do |itinerary| %>
+<%= link_to itinerary, itinerary_path(itinerary) %>
+<% end %>
+
+<%= link_to "back to home", root_path %>
