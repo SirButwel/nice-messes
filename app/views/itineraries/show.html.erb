@@ -24,7 +24,6 @@
   <li><%= @itinerary.mode %></li>
 </ul>
 
-
 <p><%= @image %></p>
 
 <p><%= link_to "back to all itineraries", itineraries_path %></p>
@@ -34,5 +33,8 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
+  data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
+  data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
+  data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
+  data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
   ></div>
-<%# "pk.eyJ1IjoibGZzY2hlZmVyIiwiYSI6ImNsYTJlc3UzaDBoOXIzcXF2dDN3MnU2ZmgifQ.QQaCoK0ryRBQECIeX2Gy7g" %>
