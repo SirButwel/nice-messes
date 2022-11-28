@@ -1,6 +1,9 @@
 <% content_for :head do %>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
 <% end %>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+<div id="map"></div>
 
 <h1>YOUR CHOSEN ITINERARY</h1>
 
@@ -15,7 +18,15 @@
   <li><%= @itinerary.duration %></li>
 </ul>
 
+
 <p><%= @image %></p>
 
 <p><%= link_to "back to all itineraries", itineraries_path %></p>
 <p><%=  link_to "back home", root_path %></p>
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= "pk.eyJ1IjoibGZzY2hlZmVyIiwiYSI6ImNsYTJlc3UzaDBoOXIzcXF2dDN3MnU2ZmgifQ.QQaCoK0ryRBQECIeX2Gy7g" %>"
+  ></div>
+<%# ENV["MAPBOX_API_KEY"] %>

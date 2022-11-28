@@ -1,8 +1,7 @@
-require 'open-uri'
-require 'json'
-require 'time'
 
 class Itinerary < ApplicationRecord
+  require 'open-uri'
+  require 'time'
   require 'uri'
   require 'net/http'
   require 'json'
@@ -12,6 +11,7 @@ class Itinerary < ApplicationRecord
   geocoded_by :end_addressend
 
   private
+  
   def weather_api
 
     url = "https://api.meteo-concept.com/api/forecast/daily/0?token=#{ENV['WEATHER_API_KEY']}&insee=#{destination_postcode}"
@@ -21,7 +21,6 @@ class Itinerary < ApplicationRecord
           p forecast
           update_weather_data(forecast)
       end
-
 
   end
   def update_weather_data(data)
