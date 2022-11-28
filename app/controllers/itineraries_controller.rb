@@ -12,7 +12,7 @@ class ItinerariesController < ApplicationController
     if @itinerary.save
       redirect_to itinerary_path(@itinerary)
     else
-      redirect_to images_path notice: "You must add start and end point"
+      redirect_to images_path notice: "You must add start and end point end mode"
     end
   end
 
