@@ -23,13 +23,16 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
-      center: [2.3518372, 48.85671259999999],
-      zoom: 13
     });
 
     this.start = [this.startLongitudeValue, this.startLatitudeValue];
     this.end = [this.endLongitudeValue, this.endLatitudeValue];
 
+    const bounds = [
+      [this.startLongitudeValue, this.startLatitudeValue],
+      [this.endLongitudeValue, this.endLatitudeValue]
+    ];
+    this.map.fitBounds(bounds);
 
     this.map.on('load', () => {
 
@@ -38,47 +41,20 @@ export default class extends Controller {
 
     });
 
-
-
-
-
-
-
-
-
-
-
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     // mapboxgl: mapboxgl }))
-    // this.map.addControl(new mapboxgl.FullscreenControl());
-    // this.map.addControl(new mapboxgl.NavigationControl());
-    this.map.addControl(
-      new MapboxDirections({
-        accessToken: mapboxgl.accessToken,
-        profile: 'mapbox/cycling',
-        unit: 'metric',
-        // coordinates: [{longitude: 2.3518372},{latitude: 48.85671259999999};{longitude: -1.5534968},{latitude: 47.2183308}],
+    this.map.addControl(new mapboxgl.FullscreenControl());
+    this.map.addControl(new mapboxgl.NavigationControl());
 
-      }),
-      'top-left'
-      );
+    // this.map.addControl(
+    //   new MapboxDirections({
+    //     accessToken: mapboxgl.accessToken,
+    //     profile: 'mapbox/driving',
+    //     unit: 'metric',
+    //   }),
+    //   'top-left'
+    //   );
 
-
-//     var mapboxgl = require('mapbox-gl');
-// var MapboxDirections = require('@mapbox/mapbox-gl-directions');
-
-// var directions = new MapboxDirections({
-//   accessToken: 'YOUR-MAPBOX-ACCESS-TOKEN',
-//   unit: 'metric',
-//   profile: 'mapbox/cycling'
-// });
-
-// var map = new mapboxgl.Map({
-//   container: 'map',
-//   style: 'mapbox://styles/mapbox/streets-v9'
-// });
-
-// map.addControl(directions, 'top-left');
   }
   async getRoute() {
     // make a directions request using cycling profile

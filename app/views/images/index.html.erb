@@ -9,8 +9,8 @@
         <%= simple_form_for @itinerary do |f| %>
           <%= f.input :start_address, placeholder: "From" %>
           <%= f.input :end_address, placeholder: "To" %>
-          <%= f.input :mode, collection: ["Driving", "Walking", "Bicycling", "Transit"],  selected: "Driving" %>
-          <%= f.button :submit, class: "bttn btn-outline-secondary" %>
+          <%= f.input :mode, collection: ["driving", "walking", "bicycling", "transit"],  selected: "Driving" %>
+          <%= f.button :submit, class: "btn btn-outline-secondary" %>
         <% end %>
     </div>
   </div>
