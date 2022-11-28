@@ -16,5 +16,4 @@ export default class extends Controller {
   submit() {
     this.submitTarget.classList.remove('disabled')
   }
-
 }
