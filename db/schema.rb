@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_155501) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_155502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_155501) do
     t.integer "mode"
     t.string "weather_data"
     t.string "destination_postcode"
+    t.string "duration_in_traffic"
     t.index ["user_id"], name: "index_itineraries_on_user_id"
   end
 

@@ -32,6 +32,9 @@ data-sketch-mode-value="<% @itinerary.mode %>"
   <li><%= @itinerary.end_latitude %></li>
   <li><%= @itinerary.distance %></li>
   <li><%= @itinerary.duration %></li>
+  <% if !@itinerary.duration_in_traffic.nil? %>
+    <li><%= @itinerary.duration_in_traffic %></li>
+  <% end %>
   <li><%= @itinerary.mode %></li>
 </ul>
 

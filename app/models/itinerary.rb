@@ -62,5 +62,10 @@ class Itinerary < ApplicationRecord
     self.start_longitude = data["routes"][0]["legs"][0]["start_location"]["lng"]
     self.end_latitude = data["routes"][0]["legs"][0]["end_location"]["lat"]
     self.end_longitude = data["routes"][0]["legs"][0]["end_location"]["lng"]
+    if data["routes"][0]["legs"][0]["duration_in_traffic"] != nil
+      self.duration_in_traffic = data["routes"][0]["legs"][0]["duration_in_traffic"]["text"]
+    else
+      self.duration_in_traffic = nil
+    end
   end
 end
