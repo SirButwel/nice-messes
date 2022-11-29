@@ -1,5 +1,5 @@
 meta_product_name: "Nice Messes"
 meta_title: "Nice Messes - Fancy Shmancy Itineraries"
 meta_description: "Nice Messes aims to bring a little artistry into otherwise boring itinerary display."
-meta_image: "https://www.kapwing.com/videos/6385f13c73276000fab0147a" # should exist in `app/assets/images/`
-# twitter_account: "@product_twitter_account"   # required for Twitter Cards
+meta_image: "../assets/images/metaimage.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter

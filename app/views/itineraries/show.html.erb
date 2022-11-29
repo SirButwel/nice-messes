@@ -11,9 +11,13 @@
 <ul>
   <li><%= @itinerary.start_address %></li>
   <li><%= @itinerary.end_address %></li>
+  <li><%= @itinerary.distance %></li>
+  <li><%= @itinerary.duration %></li>
 </ul>
 
 <p><%= @image %></p>
 
 <p><%= link_to "back to all itineraries", itineraries_path %></p>
 <p><%=  link_to "back home", root_path %></p>
+
+<% console %>
