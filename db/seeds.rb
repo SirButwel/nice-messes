@@ -9,11 +9,11 @@ require 'faker'
 puts 'Create test user'
 
 andris = User.new(
-    first_name: "andris",
-    last_name: "andris",
-    email: "andris@mail.com",
-    password: "Password"
-  )
+  first_name: "andris",
+  last_name: "andris",
+  email: "andris@mail.com",
+  password: "Password"
+)
 andris.save!
 
 Itinerary.new(start_address: "16 Villa Gaudelet, 75011 Paris", end_address: "30 rue ballu 75009 paris",
