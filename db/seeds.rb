@@ -13,10 +13,11 @@ require 'time'
 puts 'Create test user'
 
 andris = User.new(
-    name: "andris",
-    email: "andris@mail.com",
-    password: "Password"
-  )
+  first_name: "andris",
+  last_name: "andris",
+  email: "andris@mail.com",
+  password: "Password"
+)
 andris.save!
 
 puts 'Create test itinerary'
