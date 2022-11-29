@@ -1,0 +1,11 @@
+<h1>YOUR CHOSEN ITINERARY</h1>
+
+<ul>
+  <li><%= @itinerary.start_address %></li>
+  <li><%= @itinerary.end_address %></li>
+</ul>
+
+<p><%= @image %></p>
+
+<p><%= link_to "back to all itineraries", itineraries_path %></p>
+<p><%=  link_to "back home", root_path %></p>
