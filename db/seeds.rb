@@ -9,7 +9,8 @@ require 'faker'
 puts 'Create test user'
 
 andris = User.new(
-    name: "andris",
+    first_name: "andris",
+    last_name: "andris",
     email: "andris@mail.com",
     password: "Password"
   )
