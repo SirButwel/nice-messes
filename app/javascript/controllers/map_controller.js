@@ -19,7 +19,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/lfschefer/clb6e4x7x000u14keoirm8234",
       center: [2.3532147, 48.8563714],
       zoom: 9,
     });
@@ -95,7 +95,7 @@ export default class extends Controller {
 
       let tripInstructions = '';
       for (const step of steps) {
-      tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      tripInstructions += `<li class="step">${step.maneuver.instruction}</li>`;
       }
       instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
         data.duration / 60

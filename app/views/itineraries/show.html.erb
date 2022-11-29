@@ -7,58 +7,45 @@
 
 <div id="map"></div>
 
-<h1>YOUR CHOSEN ITINERARY</h1>
+<h1>YOUR ITINERARY</h1>
 
-<%= link_to "Remove trip",
-        itinerary_path(@itinerary),
-        data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-warning"
-        %>
-
-<div data-controller="sketch" id="sketch-holder"
-data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
-data-sketch-startLatitude-value="<% @itinerary.start_latitude %>"
-data-sketch-endLongitude-value="<% @itinerary.end_longitude %>"
-data-sketch-endLatitude-value="<% @itinerary.end_latitude %>"
-data-sketch-distance-value="<% @itinerary.distance %>"
-data-sketch-duration-value="<% @itinerary.duration %>"
-data-sketch-mode-value="<% @itinerary.mode %>"
->
-
-</div>
-
-<ul>
-
-  <li><%= @itinerary.start_address %></li>
-  <li><%= @itinerary.start_longitude %></li>
-  <li><%= @itinerary.start_latitude %></li>
-  <li><%= @itinerary.end_address %></li>
-  <li><%= @itinerary.end_longitude %></li>
-  <li><%= @itinerary.end_latitude %></li>
-  <li><%= @itinerary.distance %></li>
-  <li><%= @itinerary.duration %></li>
-  <% if !@itinerary.duration_in_traffic.nil? %>
-    <li><%= @itinerary.duration_in_traffic %></li>
-  <% end %>
-  <li><%= @itinerary.mode %></li>
-</ul>
-
-<p><%= @image %></p>
-
-<p><%= link_to "back to all itineraries", itineraries_path %></p>
-<p><%=  link_to "back home", root_path %></p>
-
-
-
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
-  data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
-  data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
-  data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
-  data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
-  data-map-mode-value="<%= @itinerary.mode %>">
-  <div id="instructions" data-map-target="instructions">
+<div class="img-container">
+  <div data-controller="sketch" id="sketch-holder"
+  data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
+  data-sketch-startLatitude-value="<% @itinerary.start_latitude %>"
+  data-sketch-endLongitude-value="<% @itinerary.end_longitude %>"
+  data-sketch-endLatitude-value="<% @itinerary.end_latitude %>"
+  data-sketch-distance-value="<% @itinerary.distance %>"
+  data-sketch-duration-value="<% @itinerary.duration %>"
+  data-sketch-mode-value="<% @itinerary.mode %>"
+  >
 
   </div>
+</div>
+
+
+<div class="map-container">
+  <div class="map"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
+    data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
+    data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
+    data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
+    data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
+    data-map-mode-value="<%= @itinerary.mode %>">
+
+  </div>
+</div>
+
+<div id="instructions" data-map-target="instructions">
+</div>
+
+<div class="row">
+<div class="remove d-flex">
+  <%= link_to "Remove trip",
+          itinerary_path(@itinerary),
+          data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-warning remove"
+          %>
+</div>
 </div>
