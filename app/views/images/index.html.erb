@@ -4,6 +4,7 @@
   <%= simple_form_for @itinerary do |f| %>
     <%= f.input :start_address %>
     <%= f.input :end_address %>
+    <%= f.input :mode, collection: ["driving", "walking", "bicycling", "transit"],  selected: "driving" %>
     <div class="text-center"><div class="btn btn-outline-secondary"><%= f.button :submit %></div></div>
   <% end %>
 </div>

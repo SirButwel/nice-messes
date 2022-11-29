@@ -11,7 +11,7 @@ require 'json'
 
   def calculate_itinerary
 
-    uri = URI("https://maps.googleapis.com/maps/api/directions/json?origin=#{self.start_address}&destination=#{self.end_address}&mode=driving&departure_time=now&key=#{ENV['GOOGLE_API_KEY']}")
+    uri = URI("https://maps.googleapis.com/maps/api/directions/json?origin=#{self.start_address}&destination=#{self.end_address}&mode=#{self.mode}&departure_time=now&key=#{ENV['GOOGLE_API_KEY']}")
     res = Net::HTTP.get_response(uri)
     puts res.body if res.is_a?(Net::HTTPSuccess)
     data = JSON.parse(res.body)
