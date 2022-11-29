@@ -10,3 +10,12 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-lewagon .navbar-brand img:hover {
+  scale: 1.1;
+}
+
+.nav-item :hover {
+  scale: 1.1;
+  color: black;
+}
