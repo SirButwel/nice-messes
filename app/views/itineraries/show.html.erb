@@ -10,7 +10,16 @@
 <h1>YOUR CHOSEN ITINERARY</h1>
 
 
-<div data-controller="sketch" >
+<div data-controller="sketch" id="sketch-holder"
+data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
+data-sketch-startLatitude-value="<% @itinerary.start_latitude %>"
+data-sketch-endLongitude-value="<% @itinerary.end_longitude %>"
+data-sketch-endLatitude-value="<% @itinerary.end_latitude %>"
+data-sketch-distance-value="<% @itinerary.distance %>"
+data-sketch-duration-value="<% @itinerary.duration %>"
+data-sketch-mode-value="<% @itinerary.mode %>"
+>
+
 
 </div>
 
@@ -38,4 +47,3 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
   ></div>
-<%# "pk.eyJ1IjoibGZzY2hlZmVyIiwiYSI6ImNsYTJlc3UzaDBoOXIzcXF2dDN3MnU2ZmgifQ.QQaCoK0ryRBQECIeX2Gy7g" %>
