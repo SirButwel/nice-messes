@@ -4,15 +4,18 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 <% end %>
 
+
 <div id="map"></div>
 
 <h1>YOUR CHOSEN ITINERARY</h1>
+
 
 <div data-controller="sketch" >
 
 </div>
 
 <ul>
+
   <li><%= @itinerary.start_address %></li>
   <li><%= @itinerary.start_longitude %></li>
   <li><%= @itinerary.start_latitude %></li>
