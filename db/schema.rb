@@ -37,6 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_155501) do
     t.string "duration"
     t.string "distance"
     t.string "mode"
+    t.string "weather_data"
+    t.string "destination_postcode"
     t.index ["user_id"], name: "index_itineraries_on_user_id"
   end
 

@@ -1,8 +1,7 @@
-require 'open-uri'
-require 'json'
-require 'time'
 
 class Itinerary < ApplicationRecord
+  require 'open-uri'
+  require 'time'
   require 'uri'
   require 'net/http'
   require 'json'
@@ -14,6 +13,7 @@ class Itinerary < ApplicationRecord
   after_validation :get_insee_code
 
   private
+
 
   def get_insee_code
     departure_zip_code = Geocoder.search(start_address).first.postal_code #on se sert des adresses de début et de fins pour récupérer les codes postaux
@@ -40,8 +40,8 @@ class Itinerary < ApplicationRecord
           update_weather_data(forecast)
       end
 
-
   end
+
   def update_weather_data(data)
     self.weather_data = data
 

@@ -18,6 +18,12 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     @image = Image.where(itinerary_id: params[:id])
+
+    @markers =
+    [
+      lat: @itinerary.start_latitude,
+      lng: @itinerary.start_longitude
+    ]
   end
 
   private
