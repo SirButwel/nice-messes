@@ -2,16 +2,26 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static values = {
-
+    startLatitude: Number,
+    startLongitude: Number,
+    destinationLatitude: Number,
+    destinationLongitude: Number,
+    startTemperature: Number,
+    destinationTemperature: Number,
+    transportMode: String,
+    distance: Number,
+    duration: Number,
+    weather: Number,
   }
 
   connect() {
     console.log("connected to P5 controller");
-
+const that = this
     const s = p => {
 
       p.setup = function() {
-        p.createCanvas(720, 720);
+       var canvas = p.createCanvas(720, 720);
+       canvas.parent('sketch-holder');
         p.noCursor();
 
         p.colorMode(p.HSB, 360, 100, 100);
@@ -21,7 +31,7 @@ export default class extends Controller {
 
       p.draw = function() {
         p.background(p.mouseY / 2, 100, 100);
-
+        console.log(that.distanceValue)
         p.fill(360 - p.mouseY / 2, 100, 100);
         p.rect(360, 360, p.mouseX + 1, p.mouseX + 1);
       };
