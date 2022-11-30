@@ -12,6 +12,7 @@ class Itinerary < ApplicationRecord
   geocoded_by :end_addressend
 
   private
+
   def weather_api
     url = "https://api.meteo-concept.com/api/forecast/daily/0?token=#{ENV['WEATHER_API_KEY']}&insee=#{destination_postcode}"
       URI.open("https://api.meteo-concept.com/api/forecast/daily/0?token=#{ENV['WEATHER_API_KEY']}&insee=35238") do |stream|
