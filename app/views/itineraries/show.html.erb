@@ -4,9 +4,11 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 <% end %>
 
+
 <div id="map"></div>
 
 <h1>YOUR CHOSEN ITINERARY</h1>
+
 
 <div data-controller="sketch" id="sketch-holder"
 data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
@@ -18,9 +20,11 @@ data-sketch-duration-value="<% @itinerary.duration %>"
 data-sketch-mode-value="<% @itinerary.mode %>"
 >
 
+
 </div>
 
 <ul>
+
   <li><%= @itinerary.start_address %></li>
   <li><%= @itinerary.start_longitude %></li>
   <li><%= @itinerary.start_latitude %></li>
