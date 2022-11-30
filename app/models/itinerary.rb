@@ -1,8 +1,7 @@
-require 'open-uri'
-require 'json'
-require 'time'
 
 class Itinerary < ApplicationRecord
+  require 'open-uri'
+  require 'time'
   require 'uri'
   require 'net/http'
   require 'json'
@@ -20,7 +19,6 @@ class Itinerary < ApplicationRecord
         p forecast
         update_weather_data(forecast)
       end
-
 
   end
 
