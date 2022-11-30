@@ -2,15 +2,15 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
 <% end %>
 
-<h1>YOUR CHOSEN ITINERARY</h1>
+<h1>YOUR JOURNEY</h1>
 
 <div data-controller="sketch" >
 
 </div>
 
 <ul>
-  <li><%= @itinerary.start_address %></li>
-  <li><%= @itinerary.end_address %></li>
+  <li><%= @itinerary.start_address.capitalize %></li>
+  <li><%= @itinerary.end_address.capitalize %></li>
   <li><%= @itinerary.distance %></li>
   <li><%= @itinerary.duration %></li>
 </ul>

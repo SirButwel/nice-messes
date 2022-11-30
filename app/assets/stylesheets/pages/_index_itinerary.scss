@@ -1,0 +1,24 @@
+.li-item-index {
+   margin-top: 1rem;
+   list-style: none;
+   transition: 0.3s;
+}
+
+.li-item-index :hover {
+  scale: 1.01;
+}
+
+.index-title {
+  padding: 2rem;
+}
+
+.list-banner {
+  background-color: white;
+  border: 1px none black;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.list-itin {
+  color: black;
+}

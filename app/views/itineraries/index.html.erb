@@ -1,9 +1,31 @@
-<h1>TRIPS</h1>
-<ul>
-<% @itineraries.each do |itinerary| %>
-<li><%= link_to "#{itinerary.start_address} to #{itinerary.end_address} #{itinerary.mode}",
-itinerary_path(itinerary) %></li>
-<% end %>
-</ul>
-
-<%= link_to "back to home", root_path %>
+<div class="container">
+  <div class="text-start">
+    <h1 class="text-center index-title">TRIPS</h1>
+    <ul>
+      <% @itineraries.each do |itinerary| %>
+        <li class="li-item-index">
+          <div class="container list-banner d-flex justify-content-between">
+            <div><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
+            itinerary_path(itinerary), class: "text-decoration-none list-itin"%>
+            </div>
+            <div>
+              <% case itinerary.mode %>
+              <% when "Driving"%>
+                <i class="fa-solid fa-car-side"></i>
+              <% when "Walking" %>
+                <i class="fa-solid fa-person-walking"></i>
+              <% when "Transit" %>
+                <i class="fa-solid fa-bus-simple"></i>
+              <% when "Bicycling" %>
+                <i class="fa-solid fa-tricycle"></i>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+    <div class="text-center">
+      <%= link_to "back to home", root_path, class: "btn btn-secondary"%>
+    </div>
+</div>
