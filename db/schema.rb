@@ -31,9 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_155501) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "weather_date"
-    t.string "weather_data"
-    t.string "destination_postcode"
     t.string "duration"
     t.string "distance"
     t.string "mode"
