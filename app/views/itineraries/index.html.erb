@@ -3,6 +3,8 @@
     <h1 class="text-center index-title">TRIPS</h1>
     <ul>
       <% @itineraries.each do |itinerary| %>
+      <% if current_user != itinerary.user %>
+      <% else %>
         <li class="li-item-index">
           <div class="container list-banner d-flex justify-content-between">
             <div><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
@@ -22,6 +24,7 @@
             </div>
           </div>
         </li>
+        <% end %>
       <% end %>
     </ul>
   </div>
