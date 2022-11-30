@@ -20,14 +20,17 @@ class Itinerary < ApplicationRecord
     arrival_zip_code = Geocoder.search(end_address).first.postal_code
     departure_insee_code = get_code(departure_zip_code) #on se sert des codes postaux pour récupérer les codes insee d'après le fichiers json dans pulic ( dossier)
     arrival_insee_code = get_code(arrival_zip_code)
-    weather_api(departure_insee_code) # on se sert des codes insee pour récup les données météo et on les sauvegarde
+    weather_api(arrival_insee_code) # on se sert des codes insee pour récup les données météo et on les sauvegarde
 
   end
 
   def get_code(postal_code)
-    json_file = JSON.parse(URI.open("public/code_insee.json").read)
-    insee_code = json_file.select{|element| element['fields']['postal_code']== postal_code}.first['fields']['insee_com']
-
+    json_file = JSON.parse(URI.open("public/full_insee_codes.json").read)
+    insee_codes = json_file.select{ |element| element['fields']['postal_code'] == postal_code }
+    if insee_codes.any?
+      insee_code = insee_codes.first['fields']['insee_com']
+    end
+    insee_code
   end
 
   def weather_api(insee_code)
