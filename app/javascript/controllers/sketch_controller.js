@@ -2,16 +2,13 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static values = {
-    startLatitude: Number,
     startLongitude: Number,
-    destinationLatitude: Number,
+    startLatitude: Number,
     destinationLongitude: Number,
-    startTemperature: Number,
-    destinationTemperature: Number,
-    transportMode: String,
+    destinationLatitude: Number,
+    mode: String,
     distance: Number,
     duration: Number,
-    weather: Number,
   }
 
   connect() {
