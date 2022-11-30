@@ -9,10 +9,15 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    startLongitude: Number,
+    startLatitude: Number,
+    endLongitude: Number,
+    endLatitude: Number,
   }
   connect() {
     console.log("connected to map")
+    console.log(this.startLongitudeValue)
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -22,8 +27,8 @@ export default class extends Controller {
       zoom: 13
     });
 
-    this.start = [2.3518372, 48.85671259999999];
-    this.end = [-1.5534968, 47.2183308];
+    this.start = [this.startLongitudeValue, this.startLatitudeValue];
+    this.end = [this.endLongitudeValue, this.endLatitudeValue];
 
 
     this.map.on('load', () => {
