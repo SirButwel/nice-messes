@@ -1,7 +1,9 @@
-<h1>ITINERARIES LIST</h1>
-
+<h1>TRIPS</h1>
+<ul>
 <% @itineraries.each do |itinerary| %>
-<%= link_to itinerary, itinerary_path(itinerary) %>
+<li><%= link_to "#{itinerary.start_address} to #{itinerary.end_address} #{itinerary.mode}",
+itinerary_path(itinerary) %></li>
 <% end %>
+</ul>
 
 <%= link_to "back to home", root_path %>

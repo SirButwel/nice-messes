@@ -1,12 +1,13 @@
 <h1>HOME PAGE</h1>
 
 <div class="container">
+<h3>Plan a journey</h3>
   <%= simple_form_for @itinerary do |f| %>
     <%= f.input :start_address %>
     <%= f.input :end_address %>
-    <%= f.input :mode, collection: ["driving", "walking", "bicycling", "transit"],  selected: "driving" %>
+    <%= f.input :mode, collection: ["Driving", "Walking", "Bicycling", "Transit"],  selected: "Driving" %>
     <div class="text-center"><div class="btn btn-outline-secondary"><%= f.button :submit %></div></div>
   <% end %>
 </div>
 
-<%= link_to "your itinaraire", itineraries_path %>
+<%= link_to "your itinerary", itineraries_path %>
