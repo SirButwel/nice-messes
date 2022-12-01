@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-
+  before_action :set_itinerary, only: %i[show destroy]
   def new
     @itinerary = Itinerary.new
   end
@@ -17,7 +17,6 @@ class ItinerariesController < ApplicationController
   end
 
   def show
-    @itinerary = Itinerary.find(params[:id])
     @image = Image.where(itinerary_id: params[:id])
 
     @markers =
@@ -27,7 +26,16 @@ class ItinerariesController < ApplicationController
     ]
   end
 
+  def destroy
+    @itinerary.destroy
+    redirect_to itineraries_path, status: :see_other
+  end
+
   private
+
+  def set_itinerary
+    @itinerary = Itinerary.find(params[:id])
+  end
 
   def itinerary_params
     params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :distance, :duration,)
