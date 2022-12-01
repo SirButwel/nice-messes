@@ -12,15 +12,21 @@
             </div>
             <div>
               <% case itinerary.mode %>
-              <% when "Driving"%>
+              <% when "driving"%>
                 <i class="fa-solid fa-car-side"></i>
-              <% when "Walking" %>
+              <% when "walking" %>
                 <i class="fa-solid fa-person-walking"></i>
               <% when "Transit" %>
                 <i class="fa-solid fa-bus-simple"></i>
-              <% when "Bicycling" %>
+              <% when "bicycle" %>
                 <i class="fa-solid fa-bicycle"></i>
               <% end %>
+            </div>
+            <div>
+              <%= link_to "Remove trip",
+                itinerary_path(itinerary),
+                data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-warning"
+                %>
             </div>
           </div>
         </li>
