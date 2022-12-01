@@ -6,6 +6,7 @@ class ItinerariesController < ApplicationController
 
   def create
     @itinerary = Itinerary.new(itinerary_params)
+    @itinerary.mode = params[:itinerary][:mode].to_i
     @itinerary.user = current_user
     @itinerary.save
     redirect_to itinerary_path(@itinerary)
@@ -29,7 +30,6 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :distance, :duration, :mode)
+    params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :distance, :duration,)
   end
-
 end
