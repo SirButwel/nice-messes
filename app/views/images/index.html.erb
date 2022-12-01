@@ -4,13 +4,15 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-4 journey-form">
+    <div class="col-12 col-sm-4 journey-form" data-controller="form">
       <h3>Plan a journey</h3>
         <%= simple_form_for @itinerary do |f| %>
-          <%= f.input :start_address, placeholder: "From" %>
-          <%= f.input :end_address, placeholder: "To" %>
-          <%= f.input :mode, collection: [["Voiture", 0], ["Vélo", 1], ["Marche", 2]],  prompt: "Select your transportation method" %>
-          <%= f.button :submit, class: "btn btn-outline-secondary" %>
+          <%= f.input :start_address, placeholder: "From" ,
+          input_html: {data: {form_target: "start", action:"keyup->form#end"}}
+          %>
+          <%= f.input :end_address, placeholder: "To", wrapper_html: { class: 'd-none', data: {form_target: "end"}}, input_html: {data: {action: "keyup->form#mode"}} %>
+          <%= f.input :mode, collection: [["Voiture", 0], ["Vélo", 1], ["Marche", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: 'd-none', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
+          <%= f.button :submit, class: "btn btn-outline-secondary disabled", id: "submitbtn", data: {form_target: "submit"} %>
         <% end %>
     </div>
   </div>
