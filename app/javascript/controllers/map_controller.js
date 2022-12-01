@@ -4,7 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 // var mapboxgl = require('mapbox-gl');
 // var MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
-
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
@@ -14,10 +13,10 @@ export default class extends Controller {
     startLatitude: Number,
     endLongitude: Number,
     endLatitude: Number,
+    mode: String
   }
   connect() {
     console.log("connected to map")
-    console.log(this.startLongitudeValue)
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -45,6 +44,7 @@ export default class extends Controller {
 
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     // mapboxgl: mapboxgl }))
+
     this.map.addControl(new mapboxgl.FullscreenControl());
     this.map.addControl(new mapboxgl.NavigationControl());
 
@@ -56,14 +56,22 @@ export default class extends Controller {
     //   }),
     //   'top-left'
     //   );
-
   }
   async getRoute() {
-    // make a directions request using cycling profile
-    // an arbitrary start will always be the same
-    // only the end or destination will change
+
+    let mode = ""
+    if (this.modeValue === "driving") {
+      mode = "driving-traffic"
+    }
+    else if (this.modeValue === "walking") {
+      mode = "walking"
+    }
+    else {
+      mode = "cycling"
+    }
+    console.log(mode)
     const query = await fetch(
-      `https://api.mapbox.com/directions/v5/mapbox/cycling/${this.start[0]},${this.start[1]};${this.end[0]},${this.end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+      `https://api.mapbox.com/directions/v5/mapbox/${mode}/${this.start[0]},${this.start[1]};${this.end[0]},${this.end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
       { method: 'GET' }
       );
       const json = await query.json();
