@@ -9,7 +9,7 @@
         <%= simple_form_for @itinerary do |f| %>
           <%= f.input :start_address, placeholder: "From" %>
           <%= f.input :end_address, placeholder: "To" %>
-          <%= f.input :mode, collection: ["driving", "walking", "bicycling"],  prompt: "Select your transportation method" %>
+          <%= f.input :mode, collection: [["Voiture", 0], ["Vélo", 1], ["Marche", 2]],  prompt: "Select your transportation method" %>
           <%= f.button :submit, class: "btn btn-outline-secondary" %>
         <% end %>
     </div>
