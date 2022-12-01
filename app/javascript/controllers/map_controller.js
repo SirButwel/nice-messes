@@ -1,10 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-// import { mapboxgl } from 'mapbox-gl';
-// import { MapboxDirections } from '@mapbox/mapbox-gl-directions';
-// var mapboxgl = require('mapbox-gl');
-// var MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
-// Connects to data-controller="map"
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -15,6 +10,9 @@ export default class extends Controller {
     endLatitude: Number,
     mode: String
   }
+
+  static targets = ["instuctions"]
+
   connect() {
     console.log("connected to map")
     mapboxgl.accessToken = this.apiKeyValue
@@ -42,20 +40,9 @@ export default class extends Controller {
 
     });
 
-    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-    // mapboxgl: mapboxgl }))
-
     this.map.addControl(new mapboxgl.FullscreenControl());
     this.map.addControl(new mapboxgl.NavigationControl());
 
-    // this.map.addControl(
-    //   new MapboxDirections({
-    //     accessToken: mapboxgl.accessToken,
-    //     profile: 'mapbox/driving',
-    //     unit: 'metric',
-    //   }),
-    //   'top-left'
-    //   );
   }
   async getRoute() {
 
@@ -102,5 +89,16 @@ export default class extends Controller {
           'line-opacity': 0.75
         }
       });
-    }
-}
+
+        const instructions = document.getElementById('instructions');
+        const steps = data.legs[0].steps;
+
+      let tripInstructions = '';
+      for (const step of steps) {
+      tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 60
+      )} min </strong></p><ol>${tripInstructions}</ol>`;
+      }
+  }

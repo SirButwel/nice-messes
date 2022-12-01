@@ -28,7 +28,6 @@ const that = this
 
       p.draw = function() {
         p.background(p.mouseY / 2, 100, 100);
-        console.log(that.distanceValue)
         p.fill(360 - p.mouseY / 2, 100, 100);
         p.rect(360, 360, p.mouseX + 1, p.mouseX + 1);
       };
