@@ -7,10 +7,10 @@
       <% else %>
         <li class="li-item-index">
           <div class="container list-banner d-flex justify-content-between">
-            <div><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
+            <div class="d-flex container"><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
             itinerary_path(itinerary), class: "text-decoration-none list-itin"%>
             </div>
-            <div>
+            <div class="d-flex container justify-content-center">
               <% case itinerary.mode %>
               <% when "driving"%>
                 <i class="fa-solid fa-car-side"></i>
@@ -18,14 +18,14 @@
                 <i class="fa-solid fa-person-walking"></i>
               <% when "Transit" %>
                 <i class="fa-solid fa-bus-simple"></i>
-              <% when "bicycle" %>
+              <% when "bicycling" %>
                 <i class="fa-solid fa-bicycle"></i>
               <% end %>
             </div>
-            <div>
+            <div class="d-flex container justify-content-end">
               <%= link_to "Remove trip",
                 itinerary_path(itinerary),
-                data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-warning"
+                data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-warning ml-auto"
                 %>
             </div>
           </div>
