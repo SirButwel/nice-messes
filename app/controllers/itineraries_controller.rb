@@ -9,7 +9,11 @@ class ItinerariesController < ApplicationController
     @itinerary.mode = params[:itinerary][:mode].to_i
     @itinerary.user = current_user
     @itinerary.save
-    redirect_to itinerary_path(@itinerary)
+    if @itinerary.save
+      redirect_to itinerary_path(@itinerary)
+    else
+      redirect_to images_path notice: "You must add start and end point end mode"
+    end
   end
 
   def index
