@@ -31,11 +31,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_155502) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "duration"
-    t.string "distance"
-    t.integer "mode"
+    t.string "weather_date"
     t.string "weather_data"
     t.string "destination_postcode"
+    t.string "duration"
+    t.string "distance"
+    t.string "mode"
     t.string "duration_in_traffic"
     t.index ["user_id"], name: "index_itineraries_on_user_id"
   end
