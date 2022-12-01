@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["start", "end", "mode", "submit"]
   connect() {
-    console.log("connected to form")
+    console.log("connected")
   }
 
   end() {
@@ -16,5 +16,4 @@ export default class extends Controller {
   submit() {
     this.submitTarget.classList.remove('disabled')
   }
-
 }
