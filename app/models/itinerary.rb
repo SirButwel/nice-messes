@@ -10,17 +10,17 @@ class Itinerary < ApplicationRecord
   enum :mode, TRANSPORT_MODES
 
   belongs_to :user
-  #geocoded_by :start_address, start_latitude: :lat, start_longitude: :lon
-  #geocoded_by :end_address, end_latitude: :lat, end_longitude: :lon
-  #after_validation :geocode
+  # geocoded_by :start_address, start_latitude: :lat, start_longitude: :lon
+  # geocoded_by :end_address, end_latitude: :lat, end_longitude: :lon
+  # after_validation :geocode
   after_validation :get_insee_code
 
   private
 
   def get_insee_code
-    departure_zip_code = Geocoder.search(start_address).first.postal_code #on se sert des adresses de début et de fins pour récupérer les codes postaux
+    departure_zip_code = Geocoder.search(start_address).first.postal_code # on se sert des adresses de début et de fins pour récupérer les codes postaux
     arrival_zip_code = Geocoder.search(end_address).first.postal_code
-    departure_insee_code = get_code(departure_zip_code) #on se sert des codes postaux pour récupérer les codes insee d'après le fichiers json dans pulic ( dossier)
+    departure_insee_code = get_code(departure_zip_code) # on se sert des codes postaux pour récupérer les codes insee d'après le fichiers json dans pulic ( dossier)
     arrival_insee_code = get_code(arrival_zip_code)
     weather_api(arrival_insee_code) # on se sert des codes insee pour récup les données météo et on les sauvegarde
   end
