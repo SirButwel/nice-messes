@@ -83,7 +83,6 @@ const that = this
         p.pop();
       }
 
-
   }
   new p5(s);
 }
