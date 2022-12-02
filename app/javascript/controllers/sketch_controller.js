@@ -35,7 +35,7 @@ export default class extends Controller {
       var connectionRamp = 20;
 
       p.setup = function() {
-        var canvas = p.createCanvas(800,800);
+        var canvas = p.createCanvas(600,600);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
