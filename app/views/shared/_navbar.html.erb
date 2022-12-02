@@ -11,7 +11,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+<<<<<<< HEAD
           <li class="nav-item active">
+=======
+
+          <li class="nav-item active">
+          <%= link_to "Journeys", itineraries_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+>>>>>>> db97764d6ff539fc7c4ebb2e5a8c07f398cb7545
             <%= image_tag "https://avatars.githubusercontent.com/u/78162263?v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "User Profile", "#", class: "dropdown-item" %>
