@@ -35,9 +35,11 @@
 
   </head>
 
-  <body><%= render "shared/navbar" %>
-        <%= render "shared/flashes" %>
-
-    <%= yield %>
+  <body>
+    <div class="main-container vh-100">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </div>
   </body>
 </html>
