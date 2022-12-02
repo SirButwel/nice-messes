@@ -9,13 +9,12 @@ export default class extends Controller {
     mode: String,
     distance: Number,
     duration: Number,
-    test: String
   }
 
   connect() {
     console.log("connected to P5 controller");
-    const that = this
 
+    const that = this
 
     const s = p => {
 
