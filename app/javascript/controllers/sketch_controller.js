@@ -9,12 +9,13 @@ export default class extends Controller {
     mode: String,
     distance: Number,
     duration: Number,
+    test: String
   }
 
   connect() {
     console.log("connected to P5 controller");
+    const that = this
 
-const that = this
 
     const s = p => {
 
@@ -39,9 +40,7 @@ const that = this
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
-
         lineColor = p.color(27,44,193);
-
         calculateLissajousPoints();
         drawLissajous();
       };
