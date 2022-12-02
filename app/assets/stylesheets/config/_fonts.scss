@@ -32,3 +32,11 @@ $my-font-header: "Avara_Bold Italic";
   font-style: normal;
 }
 $my-font: "Avara_Black";
+
+@font-face {
+  font-family: 'Universal-Sans-Display-Trial';
+  src: url('UniversalSansDisplayTrial491-Regular-2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+$uni-font: 'Universal-Sans-Display-Trial';

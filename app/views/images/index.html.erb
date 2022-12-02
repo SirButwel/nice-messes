@@ -1,4 +1,4 @@
-<div class="container homepage vh-100">
+<div class="container homepage min-vh-100">
 <div class="container p-5">
 <h1 class="text-center">Welcome to Nice Messes</h1>
 </div>
@@ -11,17 +11,73 @@
           input_html: {data: {form_target: "start", action:"keyup->form#end"}}
           %>
           <%= f.input :end_address, placeholder: "To", wrapper_html: { class: 'd-none', data: {form_target: "end"}}, input_html: {data: {action: "keyup->form#mode"}} %>
-          <%= f.input :mode, collection: [["Voiture", 0], ["Vélo", 1], ["Marche", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: 'd-none', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
+          <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: 'd-none', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
           <%= f.button :submit, class: "btn btn-outline-secondary disabled", id: "submitbtn", data: {form_target: "submit"} %>
         <% end %>
     </div>
   </div>
-</div>
-<div class="container">
-  <ul>
-    <% @images.each do |i| %>
-      <li><%= i %></li>
-    <% end %>
-  </ul>
-</div>
-</div>
+  </div>
+      <div class="wrapper">
+        <div class="">
+          <div class="card">
+            <%= image_tag("1.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("2.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("3.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("4.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("5.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("6.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("7.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("8.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("9.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("10.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("11.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="">
+          <div class="card">
+            <%= image_tag("12.jpg", alt: "test", class: "gallery-img") %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div
