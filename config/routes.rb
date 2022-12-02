@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get '/account', to: 'pages#dashboard'
   devise_for :users
   root to: "images#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
