@@ -2,15 +2,33 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
+$body-font: "Avara_Black";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: 'Avara_Bold';
+  src: url('Avara-Bold.woff') format('woff'),
+      url('Avara-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+$my-font-bold: "Avara_Bold";
+
+@font-face {
+  font-family: 'Avara_Bold Italic';
+  src: url('Avara-BoldItalic.woff') format('woff'),
+      url('Avara-BoldItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+$my-font-header: "Avara_Bold Italic";
+
+@font-face {
+  font-family: 'Avara_Black';
+  src: url('Avara-Black.woff') format('woff'),
+      url('Avara-Black.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+$my-font: "Avara_Black";
