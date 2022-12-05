@@ -17,8 +17,15 @@ class Itinerary < ApplicationRecord
   # after_validation :geocode
   validates :start_address, presence: true
   validates :end_address, presence: true
-  # validates :mode, presence: true
+  validates :mode, presence: true
   after_validation :get_insee_code
+
+  def duration_in_minutes
+    regex      = /((?<hours>\d+) hours )?(?<min>\d+) mins/
+    match_data = regex.match(duration_in_traffic)
+
+    return match_data[:hours].to_i * 60 +  match_data[:min].to_i
+  end
 
   private
 
