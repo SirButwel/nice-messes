@@ -30,7 +30,7 @@
 }
 
 .homepage {
-  background-image: url("https://images.pexels.com/photos/14127944/pexels-photo-14127944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-image: url("https://img.freepik.com/premium-photo/modern-abstract-dynamic-shapes-black-white-background-with-grainy-paper-texture-digital-art_598586-1406.jpg");
   background-size: cover;
   // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -49,4 +49,9 @@
 
 .gallery-img:hover {
   scale: 1.03;
+}
+
+h1 {
+  color: white;
+  mix-blend-mode: difference;
 }
