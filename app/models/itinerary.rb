@@ -59,7 +59,7 @@ class Itinerary < ApplicationRecord
   before_save :calculate_itinerary
 
   def calculate_itinerary
-    uri = URI("https://maps.googleapis.com/maps/api/directions/json?origin=#{self.start_address}&destination=#{self.end_address}&mode=#{self.mode}&region=fr&departure_time=now&key=#{ENV['GOOGLE_API_KEY']}")
+    uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{self.start_address.parameterize}&destination=#{self.end_address.parameterize}&mode=#{self.mode}&region=fr&departure_time=now&key=#{ENV['GOOGLE_API_KEY']}")
     res = Net::HTTP.get_response(uri)
     puts res.body if res.is_a?(Net::HTTPSuccess)
     data = JSON.parse(res.body)
