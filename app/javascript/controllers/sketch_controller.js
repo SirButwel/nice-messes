@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("connected to P5 controller");
+
 
     const that = this
 
@@ -20,11 +20,11 @@ export default class extends Controller {
 
       var pointCount = 500;
       var lissajousPoints = [];
-      var freqX = 4;
+      var freqX = that.durationValue;
       var freqY = 8;
-      var phi = 75;
+      var phi = 1;
 
-      var modFreqX = 3;
+      var modFreqX = that.modeValue;
       var modFreqY = 2;
 
       var lineWeight = 0.5;
