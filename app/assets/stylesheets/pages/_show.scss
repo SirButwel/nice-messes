@@ -1,6 +1,6 @@
 #instructions {
   margin: 20px;
-  width: 50%;
+  width: 80%;
   height: 500px;
   top: 0;
   bottom: 20%;
@@ -29,7 +29,7 @@ h1 {
   margin: 25px auto;
 }
 .img-container {
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   #sketch-holder {
     margin: 26px auto;
@@ -40,7 +40,8 @@ h1 {
 
     #defaultCanvas0 {
       margin: 0 auto;
-      width: fit-content;
+      width: 50%;
+      height: auto;
     }
 }
 }
