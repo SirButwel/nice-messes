@@ -11,12 +11,8 @@ export default class extends Controller {
     duration: Number,
   }
 
-  static targets = ["imageInput", "form"]
-
   connect() {
 
-    console.log("connected to P5 controller");
-    console.log(this.imageInputTarget)
 
     const that = this
     const s = p => {
@@ -24,10 +20,10 @@ export default class extends Controller {
       var pointCount = 500;
       var lissajousPoints = [];
       var freqX = that.durationValue;
-      var freqY = 8;
+      var freqY = that.distanceValue;
       var phi = 1;
 
-      var modFreqX = that.modeValue;
+      var modFreqX = that.startLatitudeValue;
       var modFreqY = 2;
 
       var lineWeight = 0.5;
@@ -45,10 +41,6 @@ export default class extends Controller {
         lineColor = p.color(27,44,193);
         calculateLissajousPoints();
         drawLissajous();
-
-        const url = canvas.elt.toDataURL()
-        console.log(url)
-        that.canvas = canvas
       };
 
       function calculateLissajousPoints() {
@@ -88,38 +80,7 @@ export default class extends Controller {
         p.pop();
       }
 
-    }
-
-    new p5(s);
   }
-
-  canvasSave(event) {
-    event.preventDefault()
-    console.log("SAVED!")
-    const that = this
-
-    // this.canvas.elt.toBlob((blob) => {
-      // that.imageInputTarget.value = blob
-    // });
-      this.imageInputTarget.value = this.canvas.elt.toDataURL()
-
-
-    // const formData = new FormData();
-
-    // formData.append('json', this.json );
-
-    // const csrfToken = document.getElementsByName("csrf-token")[0].content;
-    // On vient fetcher l'url pattern/id/update en lui donnant le this.json en body pour lé récupérer dans le controller rails
-    fetch(this.formTarget.action, {
-      method: "PATCH", // Patch method to update our pattern
-      headers: { "Accept": "application/json"},
-      body: new FormData(this.formTarget)
-    })
-      // .then(response => response.json())
-      // .then((data) => {
-      //   console.log(data)
-      // })
-
-  }
-
+  new p5(s);
+}
 }
