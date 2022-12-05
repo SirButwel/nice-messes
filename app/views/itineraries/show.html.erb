@@ -4,21 +4,29 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 <% end %>
 
-<div class="container min-vh-100">
-  <div id="map"></div>
-  <h1>YOUR ITINERARY</h1>
+<div id="map"></div>
 
-  <div class="img-container">
-    <div data-controller="sketch" id="sketch-holder"
-    data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
-    data-sketch-startLatitude-value="<% @itinerary.start_latitude %>"
-    data-sketch-endLongitude-value="<% @itinerary.end_longitude %>"
-    data-sketch-endLatitude-value="<% @itinerary.end_latitude %>"
-    data-sketch-distance-value="<% @itinerary.distance %>"
-    data-sketch-duration-value="<% @itinerary.duration %>"
-    data-sketch-mode-value="<% @itinerary.mode %>"
-    >
-    </div>
+
+<h1>YOUR ITINERARY</h1>
+
+<div class="img-container">
+  <div data-controller="sketch"
+  data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
+  data-sketch-start-latitude-value="<%= @itinerary.start_latitude %>"
+  data-sketch-end-longitude-value="<%= @itinerary.end_longitude %>"
+  data-sketch-end-latitude-value="<%= @itinerary.end_latitude %>"
+  data-sketch-distance-value="<%= @itinerary.distance %>"
+  data-sketch-duration-value="<%= @itinerary.duration %>"
+  data-sketch-mode-value="<%= @itinerary.mode %>"
+  >
+  <div id="sketch-holder"></div>
+
+  <%= simple_form_for @itinerary,
+     data: {sketch_target: "form"} do |f|%>
+    <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
+    <%= f.button :submit, "Save!", data: {action: "click->sketch#canvasSave"} %>
+    <% end %>
+
   </div>
   <div class="map-container">
     <div class="map"
