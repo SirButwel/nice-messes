@@ -4,50 +4,42 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 <% end %>
 
+<div class="container min-vh-100">
+  <div id="map"></div>
+  <h1>YOUR ITINERARY</h1>
 
-<div id="map"></div>
-
-
-<h1>YOUR ITINERARY</h1>
-
-<div class="img-container">
-  <div data-controller="sketch" id="sketch-holder"
-  data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
-  data-sketch-startLatitude-value="<% @itinerary.start_latitude %>"
-  data-sketch-endLongitude-value="<% @itinerary.end_longitude %>"
-  data-sketch-endLatitude-value="<% @itinerary.end_latitude %>"
-  data-sketch-distance-value="<% @itinerary.distance %>"
-  data-sketch-duration-value="<% @itinerary.duration %>"
-  data-sketch-mode-value="<% @itinerary.mode %>"
-  >
-
-
+  <div class="img-container">
+    <div data-controller="sketch" id="sketch-holder"
+    data-sketch-startLongitude-value="<% @itinerary.start_longitude %>"
+    data-sketch-startLatitude-value="<% @itinerary.start_latitude %>"
+    data-sketch-endLongitude-value="<% @itinerary.end_longitude %>"
+    data-sketch-endLatitude-value="<% @itinerary.end_latitude %>"
+    data-sketch-distance-value="<% @itinerary.distance %>"
+    data-sketch-duration-value="<% @itinerary.duration %>"
+    data-sketch-mode-value="<% @itinerary.mode %>"
+    >
+    </div>
   </div>
-</div>
+  <div class="map-container">
+    <div class="map"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
+      data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
+      data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
+      data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
+      data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
+      data-map-mode-value="<%= @itinerary.mode %>">
 
-
-<div class="map-container">
-  <div class="map"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
-    data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
-    data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
-    data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
-    data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
-    data-map-mode-value="<%= @itinerary.mode %>">
-
+    </div>
   </div>
-</div>
+  <div id="instructions" data-map-target="instructions">
+  </div>
+  <div class="remove d-flex">
+    <%= link_to "Remove trip",
+            itinerary_path(@itinerary),
+            data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-warning remove"
+            %>
+  </div>
 
-<div id="instructions" data-map-target="instructions">
-</div>
-
-<div class="row">
-<div class="remove d-flex">
-  <%= link_to "Remove trip",
-          itinerary_path(@itinerary),
-          data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-warning remove"
-          %>
-</div>
 </div>

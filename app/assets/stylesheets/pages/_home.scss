@@ -59,6 +59,8 @@
 .card-img-overlay {
   opacity: 0%;
   transition: 0.3s;
+  border: 1px solid black;
+  text-align: center;
 }
 
 .card-img-overlay:hover {
