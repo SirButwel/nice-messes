@@ -11,6 +11,7 @@ class Itinerary < ApplicationRecord
   enum :mode, TRANSPORT_MODES
 
   belongs_to :user
+  has_one_attached :image
   # geocoded_by :start_address, start_latitude: :lat, start_longitude: :lon
   # geocoded_by :end_address, end_latitude: :lat, end_longitude: :lon
   # after_validation :geocode

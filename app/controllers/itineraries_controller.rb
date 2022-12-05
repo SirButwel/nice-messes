@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  before_action :set_itinerary, only: %i[show destroy]
+  before_action :set_itinerary, only: %i[show destroy update]
   def new
     @itinerary = Itinerary.new
   end
@@ -35,6 +35,16 @@ class ItinerariesController < ApplicationController
     redirect_to itineraries_path, status: :see_other
   end
 
+  def update
+    decoded_data = Base64.decode64(params[:image_blob].split(',')[1])
+    @itinerary.image.attach(
+      io: StringIO.new(decoded_data),
+      content_type: 'image/jpeg',
+      filename: 'image.jpg'
+    )
+  end
+
+
   private
 
   def set_itinerary
@@ -42,6 +52,6 @@ class ItinerariesController < ApplicationController
   end
 
   def itinerary_params
-    params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :distance, :duration,)
+    params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :distance, :duration, :image_url)
   end
 end
