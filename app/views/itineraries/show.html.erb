@@ -6,20 +6,23 @@
 
 <div id="map"></div>
 
+<% console %>
 
 <h1>YOUR ITINERARY</h1>
 
 <div class="img-container">
   <div data-controller="sketch" id="sketch-holder"
 
-  data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
-  data-sketch-start-latitude-value="<%= @itinerary.start_latitude %>"
-  data-sketch-end-longitude-value="<%= @itinerary.end_longitude %>"
-  data-sketch-end-latitude-value="<%= @itinerary.end_latitude %>"
-  data-sketch-distance-value="<%= @itinerary.distance %>"
-  data-sketch-duration-value="<%= @itinerary.duration_in_minutes %>"
+    data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
+    data-sketch-start-latitude-value="<%= @itinerary.start_latitude %>"
+    data-sketch-end-longitude-value="<%= @itinerary.end_longitude %>"
+    data-sketch-end-latitude-value="<%= @itinerary.end_latitude %>"
+    data-sketch-distance-value="<%= @itinerary.distance %>"
+    data-sketch-duration-value="<%= @itinerary.duration_in_minutes %>"
 
-  data-sketch-mode-value="<%= @itinerary.mode %>"
+    data-sketch-mode-value="<%= @itinerary.mode %>"
+
+    data-sketch-tmax-value="<%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>"
   >
   <div id="sketch-holder"></div>
 

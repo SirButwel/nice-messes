@@ -23,9 +23,8 @@ class Itinerary < ApplicationRecord
   def duration_in_minutes
     regex      = /((?<hours>\d+) hours )?(?<min>\d+) mins/
     match_data = regex.match(duration)
-    
 
-    return match_data[:hours].to_i * 60 +  match_data[:min].to_i
+    return match_data[:hours].to_i * 60 + match_data[:min].to_i
   end
 
   private
@@ -34,10 +33,11 @@ class Itinerary < ApplicationRecord
     unless start_address.empty? || end_address.empty?
 
       departure_zip_code = Geocoder.search(start_address).first.postal_code # on se sert des adresses de début et de fins pour récupérer les codes postaux
-      arrival_zip_code = Geocoder.search(end_address).first.postal_code
+      arrival_zip_code = Geocoder.search(end_address).first.address.split(",")[-2].strip
       departure_insee_code = get_code(departure_zip_code) # on se sert des codes postaux pour récupérer les codes insee d'après le fichiers json dans pulic ( dossier)
       arrival_insee_code = get_code(arrival_zip_code)
-      weather_api(arrival_insee_code) # on se sert des codes insee pour récup les données météo et on les sauvegarde
+      weather_api(arrival_insee_code)
+      # on se sert des codes insee pour récup les données météo et on les sauvegarde
     end
   end
 
@@ -54,7 +54,7 @@ class Itinerary < ApplicationRecord
 
     url = "https://api.meteo-concept.com/api/forecast/daily/0?token=#{ENV['WEATHER_API_KEY']}&insee=#{insee_code}"
 
-      URI.open("https://api.meteo-concept.com/api/forecast/daily/0?token=#{ENV['WEATHER_API_KEY']}&insee=35238") do |stream|
+      URI.open(url) do |stream|
         city, forecast = JSON.parse(stream.read).values_at('city','forecast')
         p forecast
         update_weather_data(forecast)
