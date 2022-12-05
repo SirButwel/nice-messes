@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container itinerary-main">
   <div class="text-start">
-    <h1 class="text-center index-title">TRIPS</h1>
+    <h1 class="text-center index-title">Your Journeys</h1>
     <ul>
       <% @itineraries.each do |itinerary| %>
       <% if current_user != itinerary.user %>
@@ -16,8 +16,6 @@
                 <i class="fa-solid fa-car-side"></i>
               <% when "walking" %>
                 <i class="fa-solid fa-person-walking"></i>
-              <% when "Transit" %>
-                <i class="fa-solid fa-bus-simple"></i>
               <% when "bicycling" %>
                 <i class="fa-solid fa-bicycle"></i>
               <% end %>

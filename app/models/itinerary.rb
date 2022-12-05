@@ -11,12 +11,13 @@ class Itinerary < ApplicationRecord
   enum :mode, TRANSPORT_MODES
 
   belongs_to :user
+  has_one_attached :image
   # geocoded_by :start_address, start_latitude: :lat, start_longitude: :lon
   # geocoded_by :end_address, end_latitude: :lat, end_longitude: :lon
   # after_validation :geocode
   validates :start_address, presence: true
   validates :end_address, presence: true
-  #validates :mode, presence: true
+  validates :mode, presence: true
   after_validation :get_insee_code
 
   def duration_in_minutes
@@ -66,7 +67,7 @@ class Itinerary < ApplicationRecord
   before_save :calculate_itinerary
 
   def calculate_itinerary
-    uri = URI("https://maps.googleapis.com/maps/api/directions/json?origin=#{self.start_address}&destination=#{self.end_address}&mode=#{self.mode}&region=fr&departure_time=now&key=#{ENV['GOOGLE_API_KEY']}")
+    uri = URI.parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{self.start_address.parameterize}&destination=#{self.end_address.parameterize}&mode=#{self.mode}&region=fr&departure_time=now&key=#{ENV['GOOGLE_API_KEY']}")
     res = Net::HTTP.get_response(uri)
     puts res.body if res.is_a?(Net::HTTPSuccess)
     data = JSON.parse(res.body)

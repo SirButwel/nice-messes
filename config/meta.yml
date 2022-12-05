@@ -1,5 +1,5 @@
 meta_product_name: "Nice Messes"
 meta_title: "Nice Messes - Fancy Shmancy Itineraries"
 meta_description: "Nice Messes aims to bring a little artistry into otherwise boring itinerary display."
-meta_image: "../assets/images/metaimage.png" # should exist in `app/assets/images/`
+meta_image: "metaimage.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter

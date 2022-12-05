@@ -21,23 +21,17 @@
   }
 }
 
-.banner {
-  padding: 6rem;
-  background-image: url("https://media1.giphy.com/headers/weinventyou/CX5XV68QdFX8.gif");
-  background-repeat: repeat;
+.homepage {
+  background-image: url("home-background.jpg");
+  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-attachment: fixed, scroll;
   background-size: cover;
-  color: black;
 }
 
-.homepage {
-  background-image: url("https://img.freepik.com/premium-photo/modern-abstract-dynamic-shapes-black-white-background-with-grainy-paper-texture-digital-art_598586-1406.jpg");
-  background-size: cover;
-  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
   padding-top: 5rem;
 }
 
@@ -45,10 +39,32 @@
   object-fit: contain;
   width: 100%;
   height: auto;
+  mix-blend-mode: multiply;
 }
 
 .gallery-img:hover {
+  opacity: 50%;
+}
+
+.card {
+  border: none;
+  transition: 0.4s;
+}
+
+.card:hover {
   scale: 1.03;
+  filter: grayscale(100%);
+}
+
+.card-img-overlay {
+  opacity: 0%;
+  transition: 0.3s;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.card-img-overlay:hover {
+  opacity: 80%;
 }
 
 h1 {
