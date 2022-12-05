@@ -23,6 +23,7 @@ class Itinerary < ApplicationRecord
   def duration_in_minutes
     regex      = /((?<hours>\d+) hours )?(?<min>\d+) mins/
     match_data = regex.match(duration)
+    
 
     return match_data[:hours].to_i * 60 +  match_data[:min].to_i
   end

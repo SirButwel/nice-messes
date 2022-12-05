@@ -27,6 +27,7 @@ export default class extends Controller {
       var freqY = 8;
       var phi = 1;
 
+      
       var modFreqX = that.startLatitudeValue;
       var modFreqY = 2;
 
