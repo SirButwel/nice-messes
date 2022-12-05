@@ -16,7 +16,7 @@ class Itinerary < ApplicationRecord
   # after_validation :geocode
   validates :start_address, presence: true
   validates :end_address, presence: true
-  validates :mode, presence: true
+  # validates :mode, presence: true
   after_validation :get_insee_code
 
   private
