@@ -7,15 +7,19 @@
     <div class="col-12 col-sm-4 journey-form" data-controller="form">
       <h3>Plan a journey</h3>
         <%= simple_form_for @itinerary do |f| %>
-          <%= f.input :start_address, placeholder: "From" ,
-          input_html: {data: {form_target: "start", action:"keyup->form#end"}}
-          %>
+
           <%= f.input :start_address,
-          input_html: {data: {address_autocomplete_target: "start"}},
+          input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
           wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-          <%= f.input :end_address, placeholder: "To", wrapper_html: { class: 'd-none', data: {form_target: "end"}}, input_html: {data: {action: "keyup->form#mode"}} %>
-          <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: 'd-none', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
-          <%= f.button :submit, class: "btn btn-outline-secondary disabled", id: "submitbtn", data: {form_target: "submit"} %>
+
+          <%= f.input :end_address,
+          input_html: {data: {address_autocomplete_target: "start"}, class:"d-none"},
+          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+
+
+          <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: '', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
+
+          <%= f.button :submit, class: "btn btn-outline-secondary", id: "submitbtn", data: {form_target: "submit"} %>
         <% end %>
     </div>
   </div>
