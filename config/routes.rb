@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users/index'
+  get "/home", to: "pages#home"
   get '/account', to: 'pages#dashboard'
   devise_for :users
   root to: "images#index"

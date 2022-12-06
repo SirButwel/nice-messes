@@ -17,24 +17,34 @@ export default class extends Controller {
     const that = this
     const s = p => {
 
-      var pointCount = 500;
+      var pointCount = 150;
       var lissajousPoints = [];
-      var freqX = that.durationValue;
-      var freqY = that.distanceValue;
-      var phi = 1;
+      var freqX = 1;
+      var freqY = 4;
+      var phi = 0.5;
 
-      var modFreqX = that.startLatitudeValue;
+      var modFreqX = 3;
       var modFreqY = 2;
 
-      var lineWeight = 0.5;
+      var lineWeight = 0.4;
       var lineColor;
-      var lineAlpha = 50;
+      var lineAlpha = 30;
 
-      var connectionRadius = 100;
+      var connectionRadius = 80;
       var connectionRamp = 20;
 
+      var coeffX = 1;
+      var coeffY = 1;
+
+      var modif = 0.0001;
+
+      var realFramerate = 30
+
+      var usedFramerate = 10;
+
+
       p.setup = function() {
-        var canvas = p.createCanvas(600,600);
+        var canvas = p.createCanvas(300,300);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
@@ -42,6 +52,29 @@ export default class extends Controller {
         calculateLissajousPoints();
         drawLissajous();
       };
+
+
+      function animate() {
+        modFreqX += 0.01;
+        modFreqY += 0.01;
+        coeffX += modif;
+        if(coeffX > 1.25 || coeffX < 0.75) {
+            modif *= -1 * (usedFramerate / realFramerate);
+        }
+
+      }
+      function saveImages(){
+
+
+      }
+        p.draw = function () {
+            animate();
+            saveImages();
+            calculateLissajousPoints();
+            //updateLissajousPoints()
+            drawLissajous();
+        }
+
 
       function calculateLissajousPoints() {
         for (var i = 0; i <= pointCount; i++) {

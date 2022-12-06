@@ -6,7 +6,7 @@
 
 <div id="map"></div>
 
-
+<% console %>
 <h1>YOUR ITINERARY</h1>
 
 <div class="img-container">
@@ -23,11 +23,11 @@
   >
   <div id="sketch-holder"></div>
 
-  <%= simple_form_for @itinerary,
+  <div class= "test"><%= simple_form_for @itinerary,
      data: {sketch_target: "form"} do |f|%>
     <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
-    <%= f.button :submit, "Save!", data: {action: "click->sketch#canvasSave"} %>
-    <% end %>
+    <%= f.button :submit, "Save!", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-secondary" %>
+    <% end %></div>
 
   </div>
   <div class="map-container">
