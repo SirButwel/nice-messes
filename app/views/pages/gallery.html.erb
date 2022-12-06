@@ -1,0 +1,21 @@
+<h1>Gallery</h1>
+
+<div class="wrapper">
+  <% Itinerary.all.each do |itinerary| %>
+  <% if itinerary.image.key != nil %>
+    <div class="card">
+      <div class="card-img">
+        <%= cl_image_tag("#{itinerary.image.key}", alt: "Trip", class: "gallery-img") %>
+      </div>
+      <div class="card-img-overlay"><%= link_to "Journey from #{itinerary.start_address} to #{itinerary.end_address}", "#" %></div>
+    </div>
+    <% else %>
+      <div class="card">
+        <div class="card-img">
+          <%= image_tag("error.jpg", alt: "didn't work", class: "gallery-img") %>
+        </div>
+        <div class="card-img-overlay"><%= link_to "Journey from nowhere to somwhere", "#" %></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

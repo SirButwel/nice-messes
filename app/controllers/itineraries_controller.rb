@@ -44,7 +44,6 @@ class ItinerariesController < ApplicationController
     )
   end
 
-
   private
 
   def set_itinerary

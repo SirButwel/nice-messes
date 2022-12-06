@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { end } from "@popperjs/core";
 
 export default class extends Controller {
   static values = {
@@ -9,9 +10,11 @@ export default class extends Controller {
     mode: String,
     distance: Number,
     duration: Number,
+    tmax: Number,
   }
 
   connect() {
+
 
 
     const that = this
@@ -27,8 +30,35 @@ export default class extends Controller {
       var modFreqY = 2;
 
       var lineWeight = 0.4;
-      var lineColor;
       var lineAlpha = 30;
+
+      if  (that.tmaxValue < 0) {
+        var lineColor = p.color(34,55,105);
+      }
+      else if (that.tmaxValue < 5) {
+        var lineColor = p.color(5,82,152);
+      }
+      else if (that.tmaxValue < 10) {
+        var lineColor = p.color(50,113,177);
+      }
+      else if (that.tmaxValue < 15) {
+        var lineColor = p.color(115,168,210);
+      }
+      else if (that.tmaxValue < 20) {
+        var lineColor = p.color(240,149,121);
+      }
+      else if (that.tmaxValue < 25) {
+        var lineColor = p.color(230,56,48);
+      }
+      else if (that.tmaxValue < 30) {
+        var lineColor = p.color(163,30,27);
+      }
+      else if (that.tmaxValue < 35) {
+        var lineColor = p.color(101,19,19);
+      }
+      end
+
+      // var lineColor = p.color(5,100,5);
 
       var connectionRadius = 80;
       var connectionRamp = 20;
@@ -48,7 +78,7 @@ export default class extends Controller {
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
-        lineColor = p.color(27,44,193);
+        // lineColor = p.color(255,5,5);
         calculateLissajousPoints();
         drawLissajous();
       };
@@ -114,6 +144,22 @@ export default class extends Controller {
       }
 
   }
+
   new p5(s);
 }
+
+
+  canvasSave(event) {
+    event.preventDefault()
+    console.log("SAVED!")
+
+      this.imageInputTarget.value = this.canvas.elt.toDataURL()
+
+    fetch(this.formTarget.action, {
+      method: "PATCH",
+      headers: { "Accept": "application/json"},
+      body: new FormData(this.formTarget)
+    })
+  }
+
 }
