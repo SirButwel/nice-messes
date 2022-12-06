@@ -13,29 +13,24 @@ export default class extends Controller {
     tmax: Number,
   }
 
-  static targets = ["imageInput", "form"]
-
   connect() {
 
-    console.log("connected to P5 controller");
-    console.log(this.imageInputTarget)
-    console.log(this.tmaxValue)
+
 
     const that = this
     const s = p => {
 
-      var pointCount = 500;
+      var pointCount = 150;
       var lissajousPoints = [];
-      var freqX = that.durationValue;
-      var freqY = 8;
-      var phi = 1;
+      var freqX = 1;
+      var freqY = 4;
+      var phi = 0.5;
 
-
-      var modFreqX = that.startLatitudeValue;
+      var modFreqX = 3;
       var modFreqY = 2;
 
-      var lineWeight = 0.5;
-      var lineAlpha = 50;
+      var lineWeight = 0.4;
+      var lineAlpha = 30;
 
       if  (that.tmaxValue < 0) {
         var lineColor = p.color(34,55,105);
@@ -65,22 +60,51 @@ export default class extends Controller {
 
       // var lineColor = p.color(5,100,5);
 
-      var connectionRadius = 100;
+      var connectionRadius = 80;
       var connectionRamp = 20;
 
+      var coeffX = 1;
+      var coeffY = 1;
+
+      var modif = 0.0001;
+
+      var realFramerate = 30
+
+      var usedFramerate = 10;
+
+
       p.setup = function() {
-        var canvas = p.createCanvas(600,600);
+        var canvas = p.createCanvas(300,300);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
         // lineColor = p.color(255,5,5);
         calculateLissajousPoints();
         drawLissajous();
-
-        const url = canvas.elt.toDataURL()
-        console.log(url)
-        that.canvas = canvas
       };
+
+
+      function animate() {
+        modFreqX += 0.01;
+        modFreqY += 0.01;
+        coeffX += modif;
+        if(coeffX > 1.25 || coeffX < 0.75) {
+            modif *= -1 * (usedFramerate / realFramerate);
+        }
+
+      }
+      function saveImages(){
+
+
+      }
+        p.draw = function () {
+            animate();
+            saveImages();
+            calculateLissajousPoints();
+            //updateLissajousPoints()
+            drawLissajous();
+        }
+
 
       function calculateLissajousPoints() {
         for (var i = 0; i <= pointCount; i++) {
@@ -119,10 +143,11 @@ export default class extends Controller {
         p.pop();
       }
 
-    }
-
-    new p5(s);
   }
+
+  new p5(s);
+}
+
 
   canvasSave(event) {
     event.preventDefault()
