@@ -7,7 +7,7 @@ import "bootstrap"
 
 const sr = ScrollReveal();
 
-sr.reveal('.imgcard', {
+sr.reveal('.card', {
   duration: 1000,
   delay: 50,
   origin: 'top',
@@ -31,4 +31,11 @@ sr.reveal('.journey-form', {
   distance: '20px',
   scale: 0.8,
   reset: true
+})
+sr.reveal('.li-item-index', {
+  duration: 1000,
+  delay: 50,
+  origin: 'top',
+  distance: '45px',
+  scale: 0.9,
 })
