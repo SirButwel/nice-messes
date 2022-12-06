@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { end } from "@popperjs/core";
 
 export default class extends Controller {
   static values = {
@@ -9,48 +10,101 @@ export default class extends Controller {
     mode: String,
     distance: Number,
     duration: Number,
+    tmax: Number,
   }
-
-  static targets = ["imageInput", "form"]
 
   connect() {
 
-    console.log("connected to P5 controller");
-    console.log(this.imageInputTarget)
+
 
     const that = this
     const s = p => {
 
-      var pointCount = 500;
+      var pointCount = 150;
       var lissajousPoints = [];
-      var freqX = that.durationValue;
-      var freqY = 8;
-      var phi = 1;
+      var freqX = 1;
+      var freqY = 4;
+      var phi = 0.5;
 
-      
-      var modFreqX = that.startLatitudeValue;
+      var modFreqX = 3;
       var modFreqY = 2;
 
-      var lineWeight = 0.5;
-      var lineColor;
-      var lineAlpha = 50;
+      var lineWeight = 0.4;
+      var lineAlpha = 30;
 
-      var connectionRadius = 100;
+      if  (that.tmaxValue < 0) {
+        var lineColor = p.color(34,55,105);
+      }
+      else if (that.tmaxValue < 5) {
+        var lineColor = p.color(5,82,152);
+      }
+      else if (that.tmaxValue < 10) {
+        var lineColor = p.color(50,113,177);
+      }
+      else if (that.tmaxValue < 15) {
+        var lineColor = p.color(115,168,210);
+      }
+      else if (that.tmaxValue < 20) {
+        var lineColor = p.color(240,149,121);
+      }
+      else if (that.tmaxValue < 25) {
+        var lineColor = p.color(230,56,48);
+      }
+      else if (that.tmaxValue < 30) {
+        var lineColor = p.color(163,30,27);
+      }
+      else if (that.tmaxValue < 35) {
+        var lineColor = p.color(101,19,19);
+      }
+      end
+
+      // var lineColor = p.color(5,100,5);
+
+      var connectionRadius = 80;
       var connectionRamp = 20;
 
+      var coeffX = 1;
+      var coeffY = 1;
+
+      var modif = 0.0001;
+
+      var realFramerate = 30
+
+      var usedFramerate = 10;
+
+
       p.setup = function() {
-        var canvas = p.createCanvas(600,600);
+        var canvas = p.createCanvas(300,300);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
-        lineColor = p.color(27,44,193);
+        // lineColor = p.color(255,5,5);
         calculateLissajousPoints();
         drawLissajous();
-
-        const url = canvas.elt.toDataURL()
-        console.log(url)
-        that.canvas = canvas
       };
+
+
+      function animate() {
+        modFreqX += 0.01;
+        modFreqY += 0.01;
+        coeffX += modif;
+        if(coeffX > 1.25 || coeffX < 0.75) {
+            modif *= -1 * (usedFramerate / realFramerate);
+        }
+
+      }
+      function saveImages(){
+
+
+      }
+        p.draw = function () {
+            animate();
+            saveImages();
+            calculateLissajousPoints();
+            //updateLissajousPoints()
+            drawLissajous();
+        }
+
 
       function calculateLissajousPoints() {
         for (var i = 0; i <= pointCount; i++) {
@@ -89,38 +143,23 @@ export default class extends Controller {
         p.pop();
       }
 
-    }
-
-    new p5(s);
   }
+
+  new p5(s);
+}
+
 
   canvasSave(event) {
     event.preventDefault()
     console.log("SAVED!")
-    const that = this
 
-    // this.canvas.elt.toBlob((blob) => {
-      // that.imageInputTarget.value = blob
-    // });
       this.imageInputTarget.value = this.canvas.elt.toDataURL()
 
-
-    // const formData = new FormData();
-
-    // formData.append('json', this.json );
-
-    // const csrfToken = document.getElementsByName("csrf-token")[0].content;
-    // On vient fetcher l'url pattern/id/update en lui donnant le this.json en body pour lé récupérer dans le controller rails
     fetch(this.formTarget.action, {
-      method: "PATCH", // Patch method to update our pattern
+      method: "PATCH",
       headers: { "Accept": "application/json"},
       body: new FormData(this.formTarget)
     })
-      // .then(response => response.json())
-      // .then((data) => {
-      //   console.log(data)
-      // })
-
   }
 
 }

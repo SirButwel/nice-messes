@@ -1,14 +1,14 @@
-<div class="iti-show">
-  <% content_for :head do %>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
-  <% end %>
 
-  <h1>YOUR ITINERARY</h1>
+<% content_for :head do %>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+<% end %>
 
-  <div class="img-container">
-    <div data-controller="sketch" id="sketch-holder"
+<h1>YOUR ITINERARY</h1>
+
+<div class="img-container">
+  <div data-controller="sketch" id="sketch-holder"
 
     data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
     data-sketch-start-latitude-value="<%= @itinerary.start_latitude %>"
@@ -18,14 +18,29 @@
     data-sketch-duration-value="<%= @itinerary.duration_in_minutes %>"
 
     data-sketch-mode-value="<%= @itinerary.mode %>"
-    >
-    <div id="sketch-holder"></div>
 
-    <%= simple_form_for @itinerary,
-      data: {sketch_target: "form"} do |f|%>
-      <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
-      <%= f.button :submit, "Save!", data: {action: "click->sketch#canvasSave"} %>
-      <% end %>
+    data-sketch-tmax-value="<%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>"
+  >
+  <div id="sketch-holder"></div>
+
+  <div class= "test"><%= simple_form_for @itinerary,
+     data: {sketch_target: "form"} do |f|%>
+    <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
+    <%= f.button :submit, "Save!", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-secondary" %>
+    <% end %></div>
+
+  </div>
+  <div class="map-container">
+    <div class="map"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
+      data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
+      data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
+      data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
+      data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
+      data-map-mode-value="<%= @itinerary.mode %>">
+
 
     </div>
     <div class="map-container">
