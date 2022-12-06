@@ -19,7 +19,7 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "User Profile", "/account", class: "dropdown-item" %>
               <%= link_to "Journeys", itineraries_path, class: "dropdown-item" %>
-              <%= link_to "Gallery", "#", class: "dropdown-item" %>
+              <%= link_to "Gallery", "/gallery", class: "dropdown-item" %>
               <%= link_to "History", "#", class: "dropdown-item" %>
               <%= link_to "Settings", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>

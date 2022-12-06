@@ -24,13 +24,32 @@
     </div>
   </div>
   </div>
-      <div class="wrapper">
+    <div class="wrapper">
+      <% Itinerary.all.each do |itinerary| %>
+      <% if itinerary.image.key != nil %>
         <div class="card">
           <div class="card-img">
-            <%= image_tag("1.jpg", alt: "test", class: "gallery-img") %>
+            <%= cl_image_tag("#{itinerary.image.key}", alt: "Trip", class: "gallery-img") %>
           </div>
-          <div class="card-img-overlay"><%= link_to "Journey from Lausanne to Paris on a rainy day", "#" %></div>
+          <div class="card-img-overlay"><%= link_to "Journey from #{itinerary.start_address} to #{itinerary.end_address}", "#" %></div>
         </div>
+        <% else %>
+          <div class="card">
+            <div class="card-img">
+              <%= image_tag("error.jpg", alt: "didn't work", class: "gallery-img") %>
+            </div>
+            <div class="card-img-overlay"><%= link_to "Journey from nowhere to somwhere", "#" %></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+
+
+
+
+
+
         <div class="card">
           <div class="card-img">
             <%= image_tag("2.jpg", alt: "test", class: "gallery-img") %>
