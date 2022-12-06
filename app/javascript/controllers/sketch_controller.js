@@ -127,30 +127,14 @@ export default class extends Controller {
   canvasSave(event) {
     event.preventDefault()
     console.log("SAVED!")
-    const that = this
 
-    // this.canvas.elt.toBlob((blob) => {
-      // that.imageInputTarget.value = blob
-    // });
       this.imageInputTarget.value = this.canvas.elt.toDataURL()
 
-
-    // const formData = new FormData();
-
-    // formData.append('json', this.json );
-
-    // const csrfToken = document.getElementsByName("csrf-token")[0].content;
-    // On vient fetcher l'url pattern/id/update en lui donnant le this.json en body pour lé récupérer dans le controller rails
     fetch(this.formTarget.action, {
-      method: "PATCH", // Patch method to update our pattern
+      method: "PATCH",
       headers: { "Accept": "application/json"},
       body: new FormData(this.formTarget)
     })
-      // .then(response => response.json())
-      // .then((data) => {
-      //   console.log(data)
-      // })
-
   }
 
 }

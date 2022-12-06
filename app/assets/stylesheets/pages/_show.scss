@@ -14,6 +14,7 @@
     text-align: center;
   }
 }
+
 .step {
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.024);
@@ -21,15 +22,18 @@
   padding: 8px 0;
   text-align: center;
 }
+
 h1 {
   text-align: center;
   margin: 20px 0;
 }
+
 .remove {
   margin: 25px auto;
 }
+
 .img-container {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   #sketch-holder {
     margin: 26px auto;
@@ -43,12 +47,14 @@ h1 {
       width: 50%;
       height: auto;
     }
+  }
 }
-}
+
 .map {
   width: 100%;
   height: 600px;
 }
+
 .map-container {
   margin: 36px auto;
   width: 80%;

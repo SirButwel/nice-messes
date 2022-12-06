@@ -21,10 +21,13 @@ class Itinerary < ApplicationRecord
   after_validation :get_insee_code
 
   def duration_in_minutes
-    regex      = /((?<hours>\d+) hours )?(?<min>\d+) mins/
-    match_data = regex.match(duration)
+    duration_hash = duration.split.reverse.each_slice(2).to_h
+    hours = duration_hash["hours"] || duration_hash["hour"]
+    days = duration_hash["days"] || duration_hash["day"]
+    minutes = duration_hash["mins"] || duration_hash["min"]
 
-    return match_data[:hours].to_i * 60 + match_data[:min].to_i
+    return (days.to_i * 1440) + (hours.to_i * 60) + minutes.to_i
+
   end
 
   private
