@@ -30,19 +30,6 @@
     <% end %></div>
 
   </div>
-  <div class="map-container">
-    <div class="map"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
-      data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
-      data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
-      data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
-      data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
-      data-map-mode-value="<%= @itinerary.mode %>">
-
-
-    </div>
     <div class="map-container">
       <div class="map"
         data-controller="map"
