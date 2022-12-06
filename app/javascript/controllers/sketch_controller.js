@@ -20,17 +20,17 @@ export default class extends Controller {
     const that = this
     const s = p => {
 
-      var pointCount = 150;
+      var pointCount = 300;
       var lissajousPoints = [];
       var freqX = 1;
-      var freqY = 4;
-      var phi = 0.5;
+      var freqY = 0.5;
+      var phi = that.startLongitudeValue;
 
-      var modFreqX = 3;
-      var modFreqY = 2;
+      var modFreqX = that.durationValue;
+      var modFreqY = 1;
 
       var lineWeight = 0.4;
-      var lineAlpha = 30;
+      var lineAlpha = 25;
 
       if  (that.tmaxValue < 0) {
         var lineColor = p.color(34,55,105);
@@ -74,7 +74,7 @@ export default class extends Controller {
 
 
       p.setup = function() {
-        var canvas = p.createCanvas(300,300);
+        var canvas = p.createCanvas(400,400);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();

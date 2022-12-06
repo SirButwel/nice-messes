@@ -40,7 +40,6 @@ class Itinerary < ApplicationRecord
       departure_insee_code = get_code(departure_zip_code) # on se sert des codes postaux pour récupérer les codes insee d'après le fichiers json dans pulic ( dossier)
 
       arrival_insee_code = get_code(arrival_zip_code)
-      raise
       weather_api(arrival_insee_code)
       # on se sert des codes insee pour récup les données météo et on les sauvegarde
     end
