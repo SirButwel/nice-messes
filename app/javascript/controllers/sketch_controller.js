@@ -13,6 +13,8 @@ export default class extends Controller {
     tmax: Number,
   }
 
+  static targets = ["imageInput", "form"]
+
   connect() {
 
 
@@ -81,6 +83,10 @@ export default class extends Controller {
         // lineColor = p.color(255,5,5);
         calculateLissajousPoints();
         drawLissajous();
+
+        const url = canvas.elt.toDataURL()
+        console.log(url)
+        that.canvas = canvas
       };
 
 
