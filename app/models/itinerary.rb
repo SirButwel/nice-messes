@@ -35,10 +35,12 @@ class Itinerary < ApplicationRecord
   def get_insee_code
     unless start_address.empty? || end_address.empty?
 
-      departure_zip_code = Geocoder.search(start_address).first.postal_code # on se sert des adresses de début et de fins pour récupérer les codes postaux
-      arrival_zip_code = Geocoder.search(end_address).first.address.split(",")[-2].strip
+      departure_zip_code = Geocoder.search(start_address).first.data["address"]["postcode"] # on se sert des adresses de début et de fins pour récupérer les codes postaux
+      arrival_zip_code = Geocoder.search(end_address).first.data["address"]["postcode"]
       departure_insee_code = get_code(departure_zip_code) # on se sert des codes postaux pour récupérer les codes insee d'après le fichiers json dans pulic ( dossier)
+
       arrival_insee_code = get_code(arrival_zip_code)
+      raise
       weather_api(arrival_insee_code)
       # on se sert des codes insee pour récup les données météo et on les sauvegarde
     end
