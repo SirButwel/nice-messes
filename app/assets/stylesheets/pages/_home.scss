@@ -22,7 +22,7 @@
 }
 
 .homepage {
-  background-image: url("home-background.jpg");
+  background-image: url("test-bg.png");
   // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-attachment: fixed, scroll;
   background-size: cover;
@@ -39,7 +39,6 @@
   object-fit: contain;
   width: 100%;
   height: auto;
-  mix-blend-mode: multiply;
 }
 
 .gallery-img:hover {
@@ -49,11 +48,11 @@
 .card {
   border: none;
   transition: 0.4s;
+  mix-blend-mode: multiply;
 }
 
 .card:hover {
   scale: 1.03;
-  filter: grayscale(100%);
 }
 
 .card-img-overlay {
@@ -61,6 +60,7 @@
   transition: 0.3s;
   border: 1px solid black;
   text-align: center;
+
 }
 
 .gallery-img:focus {
