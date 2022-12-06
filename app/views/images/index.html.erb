@@ -31,7 +31,7 @@
           <div class="card-img">
             <%= cl_image_tag("#{itinerary.image.key}", alt: "image", class: "gallery-img") %>
           </div>
-          <div class="card-img-overlay"><%= link_to "Journey from #{itinerary.start_address} to #{itinerary.end_address}", "#" %></div>
+          <div class="card-img-overlay"><%= link_to "Journey from #{itinerary.start_address} to #{itinerary.end_address}", itinerary_path(itinerary) %></div>
           </div>
         <% else %>
         <% end %>
