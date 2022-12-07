@@ -34,16 +34,16 @@
           </div>
           <div class="card-img-overlay"><%= link_to "Journey from #{itinerary.start_address} to #{itinerary.end_address}", itinerary_path(itinerary) %>
           </div>
-        </div>
-        <div class="info">
-          <div class="info1">
-            <h4>MY MESSES N°<%= itinerary.id %></h4>
-            <p>From <%= itinerary.start_address %></p>
-            <p>To <%= itinerary.end_address %></p>
-          </div>
-          <div class="info2">
-            <p><%= itinerary.duration %></p>
-            <p><%= itinerary.mode %></p>
+          <div class="info">
+            <div class="info1">
+              <h4>MY MESSES N°<%= itinerary.id %></h4>
+              <p>From <%= itinerary.start_address %></p>
+              <p>To <%= itinerary.end_address %></p>
+            </div>
+            <div class="info2">
+              <p><%= itinerary.duration %></p>
+              <p><%= itinerary.mode %></p>
+            </div>
           </div>
         </div>
         <% else %>
