@@ -7,6 +7,7 @@ export default class extends Controller {
 
   connect() {
     console.log("connected")
-    this.textTarget.text = this.textTarget.text.slice(0, 10) + "... "
+    if (this.textTarget.text.length > 15)
+    this.textTarget.text = this.textTarget.text.slice(0, 15)+ "..."
   }
 }

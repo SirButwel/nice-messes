@@ -7,31 +7,37 @@
     <% end %>
     <h2 class="text-center"><%= @dis.sum %> km total !</h2>
     <ul>
+    <% @mess = 0 %>
       <% @itineraries.each do |itinerary| %>
       <% if current_user != itinerary.user %>
       <% else %>
         <li class="li-item-index">
-          <div class="container list-banner d-flex justify-content-between">
-            <div class="d-flex container" data-controller="word-length"><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
-            itinerary_path(itinerary), class: "text-decoration-none list-itin", id: "address", "data-word-length-target" => "text" %>
+          <div class="container">
+            <% @mess += 1 %>
+            <h6 class="mess-title">MESS N° <%= @mess %></h6>
+              <div class="container d-flex justify-content-between">
+                <div class="d-flex container" data-controller="word-length">
+                <%= link_to "#{itinerary.start_address.capitalize.split.first.gsub(",", "")} to #{itinerary.end_address.capitalize.split.first.gsub(",", "")}",
+                itinerary_path(itinerary), class: "text-decoration-none list-itin", id: "address", "data-word-length-target" => "text" %>
+                </div>
+                <div class="d-flex container justify-content-center">
+                  <% case itinerary.mode %>
+                  <% when "driving"%>
+                    <i class="fa-solid fa-car-side"></i>
+                  <% when "walking" %>
+                    <i class="fa-solid fa-person-walking"></i>
+                  <% when "bicycling" %>
+                    <i class="fa-solid fa-bicycle"></i>
+                  <% end %>
+                </div>
+                <div class="d-flex container justify-content-end">
+                  <%= link_to "DELETE",
+                    itinerary_path(itinerary),
+                    data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-secondary ml-auto"
+                    %>
+                </div>
+              </div>
             </div>
-            <div class="d-flex container justify-content-center">
-              <% case itinerary.mode %>
-              <% when "driving"%>
-                <i class="fa-solid fa-car-side"></i>
-              <% when "walking" %>
-                <i class="fa-solid fa-person-walking"></i>
-              <% when "bicycling" %>
-                <i class="fa-solid fa-bicycle"></i>
-              <% end %>
-            </div>
-            <div class="d-flex container justify-content-end">
-              <%= link_to "Remove trip",
-                itinerary_path(itinerary),
-                data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-secondary ml-auto"
-                %>
-            </div>
-          </div>
         </li>
         <% end %>
       <% end %>
