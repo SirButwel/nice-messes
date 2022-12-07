@@ -178,8 +178,8 @@ export default class extends Controller {
 
   canvasSave(event) {
     event.preventDefault()
-    // console.log("SAVED!")
-    this.imageInputTarget.value = this.canvas.elt.toDataURL()
+    console.log("SAVED!")
+      this.imageInputTarget.value = this.canvas.elt.toDataURL()
 
     fetch(this.formTarget.action, {
       method: "PATCH",
