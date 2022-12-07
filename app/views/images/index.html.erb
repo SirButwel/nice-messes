@@ -41,7 +41,11 @@
                 <div class="display-item">Temperature Range: <%= itinerary.weather_data.split(",").select {|e| e.include?("tmin")}.first.split("=>").last%> -
                   <%= itinerary.weather_data.split(",").select {|e| e.include?("tmax")}.first.split("=>").last %> °C
                 </div>
-                <div class="display-item">Means of Transport: <%= itinerary.mode.capitalize %></div>
+                <div class="display-item">Means of Transport: <% if itinerary.mode %>
+                <%= itinerary.mode.capitalize %>
+                <% else %>
+                <% end %>
+                </div>
               <div class="display-item top-item"><%= link_to "To #{itinerary.end_address}", itinerary_path(itinerary) %></div>
               </div>
             </div>

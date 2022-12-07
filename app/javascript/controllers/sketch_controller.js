@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
+
 export default class extends Controller {
   static values = {
     startLongitude: Number,
@@ -30,16 +31,16 @@ export default class extends Controller {
       var modFreqY = 1;
 
       var lineWeight = 0.4;
-      var lineAlpha = 25;
+      var lineAlpha = 55;
 
 
-      if (distanceValue < 30) {
-        pointCount = 30;
+      if (distanceValue < 160) {
+        pointCount = 160;
       }
-      else if (distanceValue > 50) {
-        pointCount = 50;
+      else if (distanceValue > 180) {
+        pointCount = 180;
       }
-      else if (distanceValue <= 50) {
+      else if (distanceValue <= 180) {
         pointCount = distanceValue;
       }
 
@@ -65,22 +66,22 @@ export default class extends Controller {
       else if (that.tmaxValue < 1) {
         var lineColor = p.color(5,82,152);
       }
-      else if (that.tmaxValue < 3) {
+      else if (that.tmaxValue < 5) {
         var lineColor = p.color(50,113,177);
       }
-      else if (that.tmaxValue < 6) {
+      else if (that.tmaxValue < 10) {
         var lineColor = p.color(115,168,210);
       }
-      else if (that.tmaxValue < 9) {
+      else if (that.tmaxValue < 15) {
         var lineColor = p.color(240,149,121);
       }
-      else if (that.tmaxValue < 12) {
+      else if (that.tmaxValue < 20) {
         var lineColor = p.color(230,56,48);
       }
-      else if (that.tmaxValue < 15) {
+      else if (that.tmaxValue < 25) {
         var lineColor = p.color(163,30,27);
       }
-      else if (that.tmaxValue < 18) {
+      else if (that.tmaxValue < 30) {
         var lineColor = p.color(101,19,19);
       }
 
@@ -97,7 +98,7 @@ export default class extends Controller {
       var usedFramerate = 10;
 
       p.setup = function() {
-        var canvas = p.createCanvas(300,400);
+        var canvas = p.createCanvas(350,500);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
@@ -175,7 +176,7 @@ export default class extends Controller {
 
   canvasSave(event) {
     event.preventDefault()
-    // console.log("SAVED!")
+    console.log("SAVED!")
     this.imageInputTarget.value = this.canvas.elt.toDataURL()
 
     fetch(this.formTarget.action, {
