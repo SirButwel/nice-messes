@@ -9,7 +9,7 @@
   border: 1px solid rgba(255,255,255,0);
 }
 .light-mode-button:focus {
-  outline:none; /* Not ideal for accessibility */
+  outline:none;
 }
 .light-mode-button span:nth-child(1) {
   position: absolute;
@@ -36,7 +36,7 @@
   transition: .3s;
 }
 
-  body {
+body {
   background-color: #f6f6f6;
   transition: background-color .3s;
 }
@@ -49,7 +49,7 @@ body[light-mode="dark"] .light-mode-button span:nth-child(1){
   color: #141516;
 }
 body[light-mode=dark] .light-mode-button span:nth-child(2) {
-left: 65px;
+  left: 65px;
   background-color: #141516;
 }
 body[light-mode="dark"] h1{
@@ -57,4 +57,23 @@ color: #d0d9df;
 }
 body[light-mode="dark"] .navbar{
 background-color: #383838;
+}
+/* body[light-mode="dark"] .card{
+  background-color: #b3b3b3;
+} */
+
+body[light-mode="dark"] .wrapper{
+  background-color: white;
+}
+body[light-mode="dark"] p{
+  color: rgb(22, 22, 22);
+}
+body[light-mode="dark"] h4{
+  color: rgb(22, 22, 22);
+}
+body[light-mode="dark"] h3{
+  color:#d0d9df;
+}
+body[light-mode="dark"] .journey-form{
+  background-color: rgb(116, 116, 116);
 }
