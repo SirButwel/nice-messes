@@ -5,31 +5,48 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 <% end %>
 
-<h1>YOUR ITINERARY</h1>
+
 
 <div class="img-container">
-  <div data-controller="sketch" id="sketch-holder"
+    <div data-controller="sketch"
 
-    data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
-    data-sketch-start-latitude-value="<%= @itinerary.start_latitude %>"
-    data-sketch-end-longitude-value="<%= @itinerary.end_longitude %>"
-    data-sketch-end-latitude-value="<%= @itinerary.end_latitude %>"
-    data-sketch-distance-value="<%= @itinerary.distance %>"
-    data-sketch-duration-value="<%= @itinerary.duration_in_minutes %>"
+      data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
+      data-sketch-start-latitude-value="<%= @itinerary.start_latitude %>"
+      data-sketch-end-longitude-value="<%= @itinerary.end_longitude %>"
+      data-sketch-end-latitude-value="<%= @itinerary.end_latitude %>"
+      data-sketch-distance-value="<%= @itinerary.distance %>"
+      data-sketch-duration-value="<%= @itinerary.duration_in_minutes %>"
+      data-sketch-mode-value="<%= @itinerary.mode %>"
+      data-sketch-tmax-value="<%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>"
+    >
+    <div id="sketch-holder"></div>
+      <div class= "test"><%= simple_form_for @itinerary,
+        data: {sketch_target: "form"} do |f|%>
+        <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
+        <%= f.button :submit, "SAVE MY MESS", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-secondary" %>
+        <% end %>
+      </div>
+    </div>
 
-    data-sketch-mode-value="<%= @itinerary.mode %>"
+    <div>
+      <h2>PARAMETER OF MY MESSY ART</h2>
+        <div class="sketch-parameters">
+          <ul class="list-unstyled">
+            <div class="d-flex justify-content-between"><li>Start longitude: </li><li><%= @itinerary.start_longitude %></li></div>
+            <div class="d-flex justify-content-between"><li>Start latitude:  </li><li><%= @itinerary.start_latitude %></li></div>
+            <div class="d-flex justify-content-between"><li>Destination weather: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>°c</li></div>
+            <div class="d-flex justify-content-between"><li>Travel time:  </li><li><%= @itinerary.duration_in_minutes %> min</li></div>
+            <div class="d-flex justify-content-between"><li>Distance:  </li><li><%= @itinerary.distance %></li></div>
+            <div class="d-flex justify-content-between"><li>Destination longitude:  </li><li><%= @itinerary.end_longitude %></li></div>
+            <div class="d-flex justify-content-between"><li>Destination latitude:  </li><li><%= @itinerary.end_latitude %></li></div>
+          </ul>
+        </div>
+    </div>
 
-    data-sketch-tmax-value="<%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>"
-  >
-  <div id="sketch-holder"></div>
+    <div>
+    <h2>YOUR ITINERARY</h2>
+    </div>
 
-  <div class= "test"><%= simple_form_for @itinerary,
-     data: {sketch_target: "form"} do |f|%>
-    <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
-    <%= f.button :submit, "Save!", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-secondary" %>
-    <% end %></div>
-
-  </div>
     <div class="map-container">
       <div class="map"
         data-controller="map"
@@ -40,18 +57,19 @@
         data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
         data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
         data-map-mode-value="<%= @itinerary.mode %>">
-
       </div>
     </div>
+
+    <h2>LETS MOVE YOUR ASS FOR ONCE</h2>
+
     <div id="instructions" data-map-target="instructions">
     </div>
+
     <div class="remove d-flex">
-      <%= link_to "Remove trip",
+      <%= link_to "REMOVE MY TRIP",
               itinerary_path(@itinerary),
-              data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-warning remove"
+              data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-outline-secondary remove"
               %>
     </div>
-
   </div>
-
 </div>

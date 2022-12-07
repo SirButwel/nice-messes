@@ -1,6 +1,11 @@
 <div class="container itinerary-main">
   <div class="text-start">
     <h1 class="text-center index-title">Your Journeys</h1>
+    <% @dis = [] %>
+    <% current_user.itineraries.each do |itinerary| %>
+    <% @dis << itinerary.distance.gsub(/\D+/, '').to_i %>
+    <% end %>
+    <h2 class="text-center"><%= @dis.sum %> km total !</h2>
     <ul>
       <% @itineraries.each do |itinerary| %>
       <% if current_user != itinerary.user %>

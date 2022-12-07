@@ -6,9 +6,21 @@
       <%= image_tag "nice_messes_logo.png" %>
     <% end %>
 
+    <div class="container">
+      <p>Dark Mode Toggle</p>
+      <button
+          class="light-mode-button"
+          aria-label="Toggle Light Mode"
+          onclick="toggle_light_mode()">
+          <span></span>
+          <span></span>
+      </button>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon "></span>
     </button>
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
@@ -34,3 +46,21 @@
     </div>
   </div>
 </div>
+
+<script>
+  function toggle_light_mode() {
+      var app = document.getElementsByTagName("BODY")[0];
+      if (localStorage.lightMode == "dark") {
+    localStorage.lightMode = "light";
+    app.setAttribute("light-mode", "light");
+      } else {
+    localStorage.lightMode = "dark";
+    app.setAttribute("light-mode", "dark");
+      }
+  }
+
+    var app = document.getElementsByTagName("BODY")[0];
+  if (localStorage.lightMode == "dark") {
+      app.setAttribute("light-mode", "dark");
+  }
+</script>

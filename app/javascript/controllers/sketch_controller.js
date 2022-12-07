@@ -16,7 +16,7 @@ export default class extends Controller {
   static targets = ["imageInput", "form"]
 
   connect() {
-
+    console.log("connected")
 
 
     const that = this
