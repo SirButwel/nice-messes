@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-
+import p5 from "../../../vendors/js/p5.min.js"
 
 export default class extends Controller {
   static values = {

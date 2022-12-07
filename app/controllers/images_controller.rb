@@ -9,9 +9,8 @@ class ImagesController < ApplicationController
   end
 
   def create
-  @image = Image.new(params[:image_url])
-  @itineray.user = current_user
-  @itinerary.save
+    @image = Image.new(params[:image_url])
+    @itineray.user = current_user
+    @itinerary.save
   end
-
 end

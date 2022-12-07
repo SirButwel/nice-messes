@@ -24,10 +24,10 @@ class ItinerariesController < ApplicationController
     @image = Image.where(itinerary_id: params[:id])
 
     @markers =
-    [
-      lat: @itinerary.start_latitude,
-      lng: @itinerary.start_longitude
-    ]
+      [
+        lat: @itinerary.start_latitude,
+        lng: @itinerary.start_longitude
+      ]
   end
 
   def destroy
@@ -51,6 +51,7 @@ class ItinerariesController < ApplicationController
   end
 
   def itinerary_params
-    params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :distance, :duration, :image_url)
+    params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude,
+                                      :end_longitude, :distance, :duration, :image_url)
   end
 end
