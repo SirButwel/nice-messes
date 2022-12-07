@@ -54,6 +54,7 @@
 
 .card:hover {
   scale: 1.03;
+  filter: grayscale(80%);
 }
 
 .card-img-overlay {
@@ -75,6 +76,7 @@ h1 {
   color: white;
   mix-blend-mode: difference;
 }
+
 .info {
   display: flex;
   justify-content: space-between;
@@ -85,4 +87,16 @@ h1 {
 }
 .galery-title {
   margin: 50px 0;
+
+
+.display-item {
+  font-size: 1vmin;
+  padding: 4px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bolder;
+
 }
