@@ -16,6 +16,9 @@ export default class extends Controller {
   static targets = ["imageInput", "form"]
 
   connect() {
+
+    console.log("connected")
+
     const that = this;
     const { distanceValue, startLongitudeValue, durationValue } = that;
 
@@ -177,7 +180,8 @@ export default class extends Controller {
   canvasSave(event) {
     event.preventDefault()
     console.log("SAVED!")
-    this.imageInputTarget.value = this.canvas.elt.toDataURL()
+      this.imageInputTarget.value = this.canvas.elt.toDataURL()
+
 
     fetch(this.formTarget.action, {
       method: "PATCH",

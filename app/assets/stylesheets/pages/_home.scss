@@ -9,6 +9,7 @@
   margin-top: 50px;
   border-radius: 3px;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  width: 80%;
   h2 {
     font-size: 25px;
     font-weight: bold;
@@ -19,13 +20,6 @@
     width: 100%;
     margin-bottom: 20px
   }
-}
-
-.homepage {
-  //background-image: url("home-background.jpg");
-  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  //background-attachment: fixed, scroll;
-  //background-size: cover;
 }
 
 .wrapper {
@@ -81,6 +75,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 6px 50px;
   .info2 {
     font-weight: bold;
   }
