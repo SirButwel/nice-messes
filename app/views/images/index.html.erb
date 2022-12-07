@@ -2,11 +2,32 @@
 <div class="container p-5">
 <h1 class="text-center">CREATE YOUR MESS WITH YOUR LIFE !</h1>
 </div>
+  <div class="loader-out sticky-top" data-controller="loading" >
+  <div class="loader d-none" data-loading-target="load">
+  <h1 class="text-center">Generating Image</h1>
+  <div class="loader-inner">
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+    <div class="loader-line-wrap">
+      <div class="loader-line"></div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10 col-sm-4 journey-form" data-controller="form">
       <h3>Plan a journey</h3>
-        <%= simple_form_for @itinerary, data: {turbo_method: false} do |f| %>
+        <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
 
           <%= f.input :start_address,
           input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
@@ -22,6 +43,7 @@
           <%= f.button :submit, class: "btn btn-outline-dark", id: "submitbtn", data: {form_target: "submit"} %>
         <% end %>
     </div>
+  </div>
   </div>
   </div>
   <h1 class="galery-title text-center">ARTY GALLERY</h1>
