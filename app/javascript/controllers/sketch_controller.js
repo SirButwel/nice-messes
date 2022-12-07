@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import { end } from "@popperjs/core";
 
 export default class extends Controller {
   static values = {
@@ -16,20 +15,16 @@ export default class extends Controller {
   static targets = ["imageInput", "form"]
 
   connect() {
-    console.log("connected")
-
-
-    const that = this
-    // const { distanceValue, startLongitudeValue, durationValue } = that
-    // console.log(distanceValue, startLongitudeValue, durationValue)
+    const that = this;
+    const { distanceValue, startLongitudeValue, durationValue } = that;
 
     const s = p => {
 
       var pointCount = 300;
       var lissajousPoints = [];
-      var freqX = that.durationValue/10;
+      var freqX = durationValue;
       var freqY = 0.5;
-      var phi = that.startLongitudeValue;
+      var phi = startLongitudeValue;
 
       var modFreqX = 8;
       var modFreqY = 1;
@@ -38,38 +33,31 @@ export default class extends Controller {
       var lineAlpha = 25;
 
 
-      // if (that.distanceValue < 30){
-      //   var pointCount = 30;
+      if (distanceValue < 30) {
+        pointCount = 30;
+      }
+      else if (distanceValue > 50) {
+        pointCount = 50;
+      }
+      else if (distanceValue <= 50) {
+        pointCount = distanceValue;
+      }
+
+      // if (startLongitudeValue > 0){
+      //   var phi = startLongitudeValue;
       // }
-      // else if (that.distanceValue > 190 ){
-      //   var pointCount = 190;
-      // }
-      // else if (that.distanceValue > 30){
-      //   var pointCount = that.distanceValue;
-      // }
+      // console.log(phi)
 
 
-
-      // if (that.startLongitudeValue < 0){
-      //     var phi = 1;
+      // if (durationValue > 15 ){
+      //   var freqX = 1.5
       // }
-      // else if (that.startLongitudeValue > 0){
-      //   var phi = that.startLongitudeValue;
+      // else if (durationValue < 1){
+      //   var freqX = 1;
       // }
-
-
-      // if (that.durationValue > 15 ){
-      //   var freqX = 15;
-      // }
-      // else if (that.durationValue < 1){
-      //   var freqX = 1;s
-      // }
-      // else if (that.durationValue < 15){
+      // else if (durationValue < 15){
       //   var freqX = that.durationValue;
       // }
-
-
-
 
       if  (that.tmaxValue < 0) {
         var lineColor = p.color(34,55,105);
@@ -96,21 +84,17 @@ export default class extends Controller {
         var lineColor = p.color(101,19,19);
       }
 
-
       // var lineColor = p.color(5,100,5);
 
       var connectionRadius = 80;
-      var connectionRamp = 20;
+      // var connectionRamp = 20;
 
       var coeffX = 1;
-      var coeffY = 1;
+      // var coeffY = 1;
 
       var modif = 0.0001;
-
       var realFramerate = 30
-
       var usedFramerate = 10;
-
 
       p.setup = function() {
         var canvas = p.createCanvas(300,400);
@@ -121,10 +105,9 @@ export default class extends Controller {
         calculateLissajousPoints();
         drawLissajous();
 
-        const url = canvas.elt.toDataURL()
-        that.canvas = canvas
+        const url = canvas.elt.toDataURL();
+        that.canvas = canvas;
       };
-
 
       function animate() {
         modFreqX += 0.01;
@@ -135,17 +118,17 @@ export default class extends Controller {
         }
 
       }
-      function saveImages(){
 
-
+      function saveImages() {
       }
-        p.draw = function () {
-            animate();
-            saveImages();
-            calculateLissajousPoints();
-            //updateLissajousPoints()
-            drawLissajous();
-        }
+
+      p.draw = function () {
+          animate();
+          saveImages();
+          calculateLissajousPoints();
+          //updateLissajousPoints()
+          drawLissajous();
+      }
 
 
       function calculateLissajousPoints() {
@@ -186,16 +169,14 @@ export default class extends Controller {
       }
 
   }
-
   new p5(s);
 }
 
 
   canvasSave(event) {
     event.preventDefault()
-    console.log("SAVED!")
-
-      this.imageInputTarget.value = this.canvas.elt.toDataURL()
+    // console.log("SAVED!")
+    this.imageInputTarget.value = this.canvas.elt.toDataURL()
 
     fetch(this.formTarget.action, {
       method: "PATCH",
@@ -203,5 +184,4 @@ export default class extends Controller {
       body: new FormData(this.formTarget)
     })
   }
-
 }
