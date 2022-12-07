@@ -18,3 +18,6 @@ application.register("map", MapController)
 
 import SketchController from "./sketch_controller"
 application.register("sketch", SketchController)
+
+import WordLengthController from "./word_length_controller"
+application.register("word-length", WordLengthController)
