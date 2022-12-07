@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
     <div class="col-10 col-sm-4 journey-form" data-controller="form">
       <h3>Plan a journey</h3>
-        <%= simple_form_for @itinerary do |f| %>
+        <%= simple_form_for @itinerary, data: {turbo_method: false} do |f| %>
 
           <%= f.input :start_address,
           input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
