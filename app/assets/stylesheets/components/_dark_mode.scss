@@ -1,38 +1,41 @@
 .light-mode-button {
-  background:0;
+  background: 0;
   border: 0;
   box-sizing: border-box;
   cursor: pointer;
-  height: 20px;
-  width: 85px;
+  width: 30px;
+  height: 16px;
   position: relative;
   border: 1px solid rgba(255,255,255,0);
+  position: fixed;
+  top: 21px;
+  right: 60px;
 }
 .light-mode-button:focus {
   outline:none;
 }
+
 .light-mode-button span:nth-child(1) {
   position: absolute;
-  top:0;
-  left:0;
-  width: 85px;
-  height:20px;
-  border-radius: 20px;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 16px;
   background-color: #d6d7db;
-  // box-shadow: inset 1px 1px 3px 0 rgb(0, 0, 0, 0.4);
-  box-shadow: inset;
+  border-radius: 9px;
+  // box-shadow: inset 1px 1px 2px 0 rgb(0 0 0 / 40%);
   transition: .3s;
 }
 
 .light-mode-button span:nth-child(2) {
   position: absolute;
-  top:2px;
-  left:6px;
-  width: 16px;
-  height: 16px;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
   background-color: #fff;
   border-radius: 50%;
-  // box-shadow: 1px 1px 2px 0 rgb(0, 0, 0, 0.4);
+  // box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
   transition: .3s;
 }
 
@@ -49,7 +52,7 @@ body[light-mode="dark"] .light-mode-button span:nth-child(1){
   color: #141516;
 }
 body[light-mode=dark] .light-mode-button span:nth-child(2) {
-  left: 65px;
+  left: 18px;
   background-color: #141516;
 }
 body[light-mode="dark"] h1{
@@ -58,9 +61,6 @@ color: #d0d9df;
 body[light-mode="dark"] .navbar{
 background-color: #383838;
 }
-/* body[light-mode="dark"] .card{
-  background-color: #b3b3b3;
-} */
 
 body[light-mode="dark"] .wrapper{
   background-color: white;
@@ -76,4 +76,7 @@ body[light-mode="dark"] h3{
 }
 body[light-mode="dark"] .journey-form{
   background-color: rgb(116, 116, 116);
+}
+body[light-mode="dark"] #instructions p{
+  color: #d0d9df;
 }
