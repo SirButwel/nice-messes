@@ -20,45 +20,82 @@ export default class extends Controller {
 
 
     const that = this
+    // const { distanceValue, startLongitudeValue, durationValue } = that
+    // console.log(distanceValue, startLongitudeValue, durationValue)
+
     const s = p => {
 
       var pointCount = 300;
       var lissajousPoints = [];
-      var freqX = 1;
+      var freqX = that.durationValue/10;
       var freqY = 0.5;
       var phi = that.startLongitudeValue;
 
-      var modFreqX = that.durationValue;
+      var modFreqX = 8;
       var modFreqY = 1;
 
       var lineWeight = 0.4;
       var lineAlpha = 25;
 
+
+      // if (that.distanceValue < 30){
+      //   var pointCount = 30;
+      // }
+      // else if (that.distanceValue > 190 ){
+      //   var pointCount = 190;
+      // }
+      // else if (that.distanceValue > 30){
+      //   var pointCount = that.distanceValue;
+      // }
+
+
+
+      // if (that.startLongitudeValue < 0){
+      //     var phi = 1;
+      // }
+      // else if (that.startLongitudeValue > 0){
+      //   var phi = that.startLongitudeValue;
+      // }
+
+
+      // if (that.durationValue > 15 ){
+      //   var freqX = 15;
+      // }
+      // else if (that.durationValue < 1){
+      //   var freqX = 1;s
+      // }
+      // else if (that.durationValue < 15){
+      //   var freqX = that.durationValue;
+      // }
+
+
+
+
       if  (that.tmaxValue < 0) {
         var lineColor = p.color(34,55,105);
       }
-      else if (that.tmaxValue < 5) {
+      else if (that.tmaxValue < 1) {
         var lineColor = p.color(5,82,152);
       }
-      else if (that.tmaxValue < 10) {
+      else if (that.tmaxValue < 3) {
         var lineColor = p.color(50,113,177);
       }
-      else if (that.tmaxValue < 15) {
+      else if (that.tmaxValue < 6) {
         var lineColor = p.color(115,168,210);
       }
-      else if (that.tmaxValue < 20) {
+      else if (that.tmaxValue < 9) {
         var lineColor = p.color(240,149,121);
       }
-      else if (that.tmaxValue < 25) {
+      else if (that.tmaxValue < 12) {
         var lineColor = p.color(230,56,48);
       }
-      else if (that.tmaxValue < 30) {
+      else if (that.tmaxValue < 15) {
         var lineColor = p.color(163,30,27);
       }
-      else if (that.tmaxValue < 35) {
+      else if (that.tmaxValue < 18) {
         var lineColor = p.color(101,19,19);
       }
-      end
+
 
       // var lineColor = p.color(5,100,5);
 
@@ -76,7 +113,7 @@ export default class extends Controller {
 
 
       p.setup = function() {
-        var canvas = p.createCanvas(400,400);
+        var canvas = p.createCanvas(300,400);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
@@ -85,7 +122,6 @@ export default class extends Controller {
         drawLissajous();
 
         const url = canvas.elt.toDataURL()
-        console.log(url)
         that.canvas = canvas
       };
 

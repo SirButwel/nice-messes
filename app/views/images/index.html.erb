@@ -1,6 +1,6 @@
 <div class="container homepage min-vh-100">
 <div class="container p-5">
-<h1 class="text-center">Welcome to Nice Messes</h1>
+<h1 class="text-center">Make your shitty life beautiful</h1>
 </div>
 <div class="container">
   <div class="row justify-content-center">
@@ -19,7 +19,7 @@
 
           <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: '', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
 
-          <%= f.button :submit, class: "btn btn-outline-secondary", id: "submitbtn", data: {form_target: "submit"} %>
+          <%= f.button :submit, class: "btn btn-outline-dark", id: "submitbtn", data: {form_target: "submit"} %>
         <% end %>
     </div>
   </div>

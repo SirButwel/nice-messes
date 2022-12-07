@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .main-container {
-  background-color: white;
+  background-color: black;
 }
 
 .journey-form {
@@ -22,10 +22,10 @@
 }
 
 .homepage {
-  background-image: url("home-background.jpg");
+  //background-image: url("home-background.jpg");
   // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-attachment: fixed, scroll;
-  background-size: cover;
+  //background-attachment: fixed, scroll;
+  //background-size: cover;
 }
 
 .wrapper {
