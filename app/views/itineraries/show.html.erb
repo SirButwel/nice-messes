@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 <% end %>
 
-<h1>YOUR ITINERARY</h1>
+
 
 <div class="img-container">
   <div data-controller="sketch"
@@ -26,6 +26,15 @@
       <%= f.button :submit, "SAVE MY MESS", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-secondary" %>
       <% end %>
     </div>
+  </div>
+
+  <div>
+  <h2>PARAMETER OF MY MESSY ART</h2>
+
+  </div>
+
+  <div>
+  <h2>YOUR ITINERARY</h2>
   </div>
   <div class="map-container">
     <div class="map"
