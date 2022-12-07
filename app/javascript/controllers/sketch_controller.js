@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import { end } from "@popperjs/core";
 
 export default class extends Controller {
   static values = {
@@ -16,67 +15,92 @@ export default class extends Controller {
   static targets = ["imageInput", "form"]
 
   connect() {
+
     console.log("connected")
 
+    const that = this;
+    const { distanceValue, startLongitudeValue, durationValue } = that;
 
-    const that = this
     const s = p => {
 
-      var pointCount = 150;
+      var pointCount = 300;
       var lissajousPoints = [];
-      var freqX = 1;
-      var freqY = 4;
-      var phi = 0.5;
+      var freqX = durationValue;
+      var freqY = 0.5;
+      var phi = startLongitudeValue;
 
-      var modFreqX = 3;
-      var modFreqY = 2;
+      var modFreqX = 8;
+      var modFreqY = 1;
 
       var lineWeight = 0.4;
-      var lineAlpha = 30;
+      var lineAlpha = 25;
+
+
+      if (distanceValue < 30) {
+        pointCount = 30;
+      }
+      else if (distanceValue > 50) {
+        pointCount = 50;
+      }
+      else if (distanceValue <= 50) {
+        pointCount = distanceValue;
+      }
+
+      // if (startLongitudeValue > 0){
+      //   var phi = startLongitudeValue;
+      // }
+      // console.log(phi)
+
+
+      // if (durationValue > 15 ){
+      //   var freqX = 1.5
+      // }
+      // else if (durationValue < 1){
+      //   var freqX = 1;
+      // }
+      // else if (durationValue < 15){
+      //   var freqX = that.durationValue;
+      // }
 
       if  (that.tmaxValue < 0) {
         var lineColor = p.color(34,55,105);
       }
-      else if (that.tmaxValue < 5) {
+      else if (that.tmaxValue < 1) {
         var lineColor = p.color(5,82,152);
       }
-      else if (that.tmaxValue < 10) {
+      else if (that.tmaxValue < 3) {
         var lineColor = p.color(50,113,177);
       }
-      else if (that.tmaxValue < 15) {
+      else if (that.tmaxValue < 6) {
         var lineColor = p.color(115,168,210);
       }
-      else if (that.tmaxValue < 20) {
+      else if (that.tmaxValue < 9) {
         var lineColor = p.color(240,149,121);
       }
-      else if (that.tmaxValue < 25) {
+      else if (that.tmaxValue < 12) {
         var lineColor = p.color(230,56,48);
       }
-      else if (that.tmaxValue < 30) {
+      else if (that.tmaxValue < 15) {
         var lineColor = p.color(163,30,27);
       }
-      else if (that.tmaxValue < 35) {
+      else if (that.tmaxValue < 18) {
         var lineColor = p.color(101,19,19);
       }
-      end
 
       // var lineColor = p.color(5,100,5);
 
       var connectionRadius = 80;
-      var connectionRamp = 20;
+      // var connectionRamp = 20;
 
       var coeffX = 1;
-      var coeffY = 1;
+      // var coeffY = 1;
 
       var modif = 0.0001;
-
       var realFramerate = 30
-
       var usedFramerate = 10;
 
-
       p.setup = function() {
-        var canvas = p.createCanvas(300,300);
+        var canvas = p.createCanvas(300,400);
         canvas.parent('sketch-holder');
         p.colorMode(p.RGB, 755, 255, 255, 100);
         p.noFill();
@@ -84,11 +108,9 @@ export default class extends Controller {
         calculateLissajousPoints();
         drawLissajous();
 
-        const url = canvas.elt.toDataURL()
-        console.log(url)
-        that.canvas = canvas
+        const url = canvas.elt.toDataURL();
+        that.canvas = canvas;
       };
-
 
       function animate() {
         modFreqX += 0.01;
@@ -99,17 +121,17 @@ export default class extends Controller {
         }
 
       }
-      function saveImages(){
 
-
+      function saveImages() {
       }
-        p.draw = function () {
-            animate();
-            saveImages();
-            calculateLissajousPoints();
-            //updateLissajousPoints()
-            drawLissajous();
-        }
+
+      p.draw = function () {
+          animate();
+          saveImages();
+          calculateLissajousPoints();
+          //updateLissajousPoints()
+          drawLissajous();
+      }
 
 
       function calculateLissajousPoints() {
@@ -150,16 +172,14 @@ export default class extends Controller {
       }
 
   }
-
   new p5(s);
 }
 
 
   canvasSave(event) {
     event.preventDefault()
-    console.log("SAVED!")
-
-      this.imageInputTarget.value = this.canvas.elt.toDataURL()
+    // console.log("SAVED!")
+    this.imageInputTarget.value = this.canvas.elt.toDataURL()
 
     fetch(this.formTarget.action, {
       method: "PATCH",
@@ -167,5 +187,4 @@ export default class extends Controller {
       body: new FormData(this.formTarget)
     })
   }
-
 }
