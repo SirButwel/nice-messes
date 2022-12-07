@@ -7,13 +7,12 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 @font-face {
-  font-family: 'Avara_Bold';
-  src: url('Avara-Bold.woff') format('woff'),
-      url('Avara-Bold.woff2') format('woff2');
+  font-family: 'PPCirka-Bold';
+  src: url('PPcika-Bold.otf') format('otf');
   font-weight: normal;
   font-style: normal;
 }
-$my-font-bold: "Avara_Bold";
+$my-font-bold: "PPCirka-Bold";
 
 @font-face {
   font-family: 'Avara_Bold Italic';
@@ -25,13 +24,12 @@ $my-font-bold: "Avara_Bold";
 $my-font-header: "Avara_Bold Italic";
 
 @font-face {
-  font-family: 'Avara_Black';
-  src: url('Avara-Black.woff') format('woff'),
-      url('Avara-Black.woff2') format('woff2');
+  font-family: 'PPCirka-Light';
+  src: url('PPcirka-Light.otf') format('otf');
   font-weight: normal;
   font-style: normal;
 }
-$my-font: "Avara_Black";
+$my-font: "PPCirka-Light";
 
 @font-face {
   font-family: 'Universal-Sans-Display-Trial';
