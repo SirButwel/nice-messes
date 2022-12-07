@@ -36,5 +36,6 @@ $my-font: "PPCirka-Light";
   src: url('UniversalSansDisplayTrial491-Regular-2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-feature-settings: "calt" 1, "rlig" 1, "rvrn" 1, "kern" 1, "rclt" 1, "dlig" 1, "liga" 1;
 }
 $uni-font: 'Universal-Sans-Display-Trial';
