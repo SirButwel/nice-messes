@@ -58,9 +58,6 @@ color: #d0d9df;
 body[light-mode="dark"] .navbar{
 background-color: #383838;
 }
-/* body[light-mode="dark"] .card{
-  background-color: #b3b3b3;
-} */
 
 body[light-mode="dark"] .wrapper{
   background-color: white;
@@ -76,4 +73,7 @@ body[light-mode="dark"] h3{
 }
 body[light-mode="dark"] .journey-form{
   background-color: rgb(116, 116, 116);
+}
+body[light-mode="dark"] #instructions p{
+  color: #d0d9df;
 }
