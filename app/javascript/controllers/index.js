@@ -13,6 +13,9 @@ application.register("form", FormController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LoadingController from "./loading_controller"
+application.register("loading", LoadingController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 
