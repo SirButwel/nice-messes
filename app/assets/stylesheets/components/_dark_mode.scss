@@ -3,8 +3,8 @@
   border: 0;
   box-sizing: border-box;
   cursor: pointer;
-  height: 40px;
-  width: 100px;
+  height: 20px;
+  width: 85px;
   position: relative;
   border: 1px solid rgba(255,255,255,0);
 }
@@ -15,8 +15,8 @@
   position: absolute;
   top:0;
   left:0;
-  width: 100px;
-  height:40px;
+  width: 85px;
+  height:20px;
   border-radius: 20px;
   background-color: #d6d7db;
   // box-shadow: inset 1px 1px 3px 0 rgb(0, 0, 0, 0.4);
@@ -26,10 +26,10 @@
 
 .light-mode-button span:nth-child(2) {
   position: absolute;
-  top:5px;
-  left:5px;
-  width: 30px;
-  height: 30px;
+  top:2px;
+  left:6px;
+  width: 16px;
+  height: 16px;
   background-color: #fff;
   border-radius: 50%;
   // box-shadow: 1px 1px 2px 0 rgb(0, 0, 0, 0.4);
