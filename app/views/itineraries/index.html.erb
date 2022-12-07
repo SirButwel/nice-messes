@@ -12,8 +12,8 @@
       <% else %>
         <li class="li-item-index">
           <div class="container list-banner d-flex justify-content-between">
-            <div class="d-flex container"><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
-            itinerary_path(itinerary), class: "text-decoration-none list-itin"%>
+            <div class="d-flex container" data-controller="word-length"><%= link_to "#{itinerary.start_address.capitalize} to #{itinerary.end_address.capitalize}",
+            itinerary_path(itinerary), class: "text-decoration-none list-itin", id: "address", "data-word-length-target" => "text" %>
             </div>
             <div class="d-flex container justify-content-center">
               <% case itinerary.mode %>
