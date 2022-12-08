@@ -78,14 +78,17 @@
           </div>
         </div>
         <div class="info">
-          <div class="info1">
+
             <h4><%= link_to "MY MESSES N° #{itinerary.id}", itinerary_path(itinerary)%></h4>
+          <div class="info1">
+            <div class="info2">
             <p>From <%= itinerary.start_address %></p>
             <p>To <%= itinerary.end_address %></p>
-          </div>
-          <div class="info2">
+            </div>
+          <div class="info2 text-end">
             <p><%= itinerary.duration %></p>
             <p><%= itinerary.mode.capitalize %></p>
+          </div>
           </div>
         </div>
       <% else %>
