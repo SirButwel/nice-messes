@@ -29,12 +29,11 @@
           <i class="fas fa-bars avatar dropdown-toggle", id= "navbarDropdown", data-bs-toggle="dropdown", aria-haspopup="true" aria-expanded="false">
           </i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "User Profile", "/account", class: "dropdown-item" %>
-              <%= link_to "Journeys", itineraries_path, class: "dropdown-item" %>
-              <%= link_to "Gallery", "/gallery", class: "dropdown-item" %>
-              <%= link_to "History", "#", class: "dropdown-item" %>
-              <%= link_to "Settings", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>
+              <%= link_to "USER PROFILE", "/account", class: "dropdown-item" %>
+              <%= link_to "MY JOURNEYS", itineraries_path, class: "dropdown-item" %>
+              <%= link_to "ART GALLERY", "/gallery", class: "dropdown-item" %>
+
+              <%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>
             </div>
           </li>
         <% else %>
