@@ -8,7 +8,8 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 // To use a font file (.woff) uncomment following lines
 @font-face {
   font-family: 'PPCirka-Bold';
-  src: url('PPcika-Bold.otf') format('otf');
+  src: url('PPCirka-Bold.woff') format('woff'),
+      url('PPCirka-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -25,7 +26,8 @@ $my-font-header: "Avara_Bold Italic";
 
 @font-face {
   font-family: 'PPCirka-Light';
-  src: url('PPcirka-Light.otf') format('otf');
+  src: url('PPCirka-Light.woff') format('woff'),
+      url('PPCirka-Light.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
