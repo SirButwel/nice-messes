@@ -19,11 +19,10 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/lfschefer/clb6e4x7x000u14keoirm8234",
+      style: "mapbox://styles/mariesnti/clbdtfot3000a14r134ltdp44",
       center: [2.3532147, 48.8563714],
       zoom: 9,
     });
-
     this.start = [this.startLongitudeValue, this.startLatitudeValue];
     this.end = [this.endLongitudeValue, this.endLatitudeValue];
 
