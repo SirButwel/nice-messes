@@ -1,6 +1,7 @@
 <div class="container homepage min-vh-100">
-<div class="container p-5">
-<h1 class="text-center">CREATE A MESS WITH YOUR LIFE !</h1>
+
+<div class="container title-padding">
+<h1 class="text">CREATE YOUR</h1><h1 class="text2">MESS WITH YOUR ITINERARY</h1>
 </div>
   <div class="loader-out sticky-top" data-controller="loading" >
   <div class="loader d-none" data-loading-target="load">
@@ -26,7 +27,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10 col-sm-4 journey-form" data-controller="form">
-      <h3>Plan a journey</h3>
         <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
 
           <%= f.input :start_address,
@@ -46,7 +46,8 @@
   </div>
   </div>
   </div>
-  <h1 class="galery-title text-center">ARTSY GALLERY</h1>
+  <h1 class="galery-title">ART GALLERY</h1>
+
     <div class="wrapper">
       <% Itinerary.all.each do |itinerary| %>
 
