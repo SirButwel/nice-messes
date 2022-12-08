@@ -30,7 +30,7 @@
     <div>
       <div class="title-parameter"><h1>PARAMETERS OF YOUR MESSY ART</h1></div>
         <div class="sketch-parameters">
-          <ul class="list-unstyled">
+          <ul class="list-unstyled ul-show">
             <div class="d-flex justify-content-between"><li>Start longitude: </li><li><%= @itinerary.start_longitude %></li></div>
             <div class="d-flex justify-content-between"><li>Start latitude:  </li><li><%= @itinerary.start_latitude %></li></div>
             <div class="d-flex justify-content-between"><li>Temperature: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>°c</li></div>
