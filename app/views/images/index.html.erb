@@ -1,6 +1,6 @@
 <div class="container homepage min-vh-100">
 <div class="container p-5">
-<h1 class="text-center">CREATE YOUR MESS WITH YOUR LIFE !</h1>
+<h1 class="text-center">CREATE A MESS WITH YOUR LIFE !</h1>
 </div>
   <div class="loader-out sticky-top" data-controller="loading" >
   <div class="loader d-none" data-loading-target="load">
@@ -46,7 +46,7 @@
   </div>
   </div>
   </div>
-  <h1 class="galery-title text-center">ARTY GALLERY</h1>
+  <h1 class="galery-title text-center">ARTSY GALLERY</h1>
     <div class="wrapper">
       <% Itinerary.all.each do |itinerary| %>
 
@@ -81,7 +81,7 @@
             </div>
             <div class="info2">
               <p><%= itinerary.duration %></p>
-              <p><%= itinerary.mode %></p>
+              <p><%= itinerary.mode.capitalize %></p>
             </div>
           </div>
         </div>
