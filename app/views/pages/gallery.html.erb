@@ -1,15 +1,33 @@
 <h1>Gallery</h1>
 
-<div class="wrapper">
-  <% Itinerary.all.each do |itinerary| %>
-  <% if itinerary.image.key != nil %>
-    <div class="card">
-      <div class="card-img">
-        <%= cl_image_tag("#{itinerary.image.key}", alt: "Trip", class: "gallery-img") %>
-      </div>
-      <div class="card-img-overlay"><%= link_to "Journey from #{itinerary.start_address} to #{itinerary.end_address}", "#" %></div>
+    <div class="wrapper">
+      <% Itinerary.all.each do |itinerary| %>
+
+        <% if itinerary.image.key != nil %>
+          <div class="card">
+            <div class="card-img">
+              <%= cl_image_tag("#{itinerary.image.key}", alt: "image", class: "gallery-img") %>
+            </div>
+            <div class="card-img-overlay">
+               <div>
+                <div class="display-item top-item"><%= link_to "Journey from #{itinerary.start_address}", itinerary_path(itinerary) %></div>
+                <div class="display-item">Trip Duration: <%= itinerary.duration %></div>
+                <div class="display-item">Distance: <%= itinerary.distance %></div>
+                <div class="display-item">Temperature Range: <%= itinerary.weather_data.split(",").select {|e| e.include?("tmin")}.first.split("=>").last%> -
+                  <%= itinerary.weather_data.split(",").select {|e| e.include?("tmax")}.first.split("=>").last %> °C
+                </div>
+                <div class="display-item">Means of Transport: <% if itinerary.mode %>
+                <%= itinerary.mode.capitalize %>
+                <% else %>
+                <% end %>
+                </div>
+              <div class="display-item top-item"><%= link_to "To #{itinerary.end_address}", itinerary_path(itinerary) %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+        <% end %>
+      <% end %>
+
     </div>
-    <% else %>
-    <% end %>
-  <% end %>
-</div>
