@@ -1,93 +1,96 @@
 <div class="container homepage min-vh-100">
 
-<div class="container title-padding">
-<h1 class="text2 text-anim">CREATE YOUR</h1><h1 class="text2 text-anim">MESS WITH YOUR</h1><h1 class="text2 text-anim"> ITINERARY</h1>
-</div>
-  <div class="loader-out sticky-top" data-controller="loading" >
-  <div class="loader d-none" data-loading-target="load">
-  <div class="text-center atxt opacity-100">
-    <span style="--i:1">G</span>
-    <span style="--i:2">e</span>
-    <span style="--i:3">n</span>
-    <span style="--i:4">e</span>
-    <span style="--i:5">r</span>
-    <span style="--i:6">a</span>
-    <span style="--i:7">t</span>
-    <span style="--i:8">i</span>
-    <span style="--i:9">n</span>
-    <span style="--i:10" class="space">g</span>
-    <span style="--i:11"> </span>
-    <span style="--i:12">I</span>
-    <span style="--i:13">m</span>
-    <span style="--i:14">a</span>
-    <span style="--i:15">g</span>
-    <span style="--i:16">e</span>
+  <div class="container title-padding">
+    <h1 class="text2 text-anim">CREATE YOUR</h1><h1 class="text2 text-anim">MESS WITH YOUR</h1><h1 class="text2 text-anim"> ITINERARY</h1>
   </div>
-  <div class="loader-inner">
-    <div class="loader-line-wrap">
-      <div class="loader-line"></div>
-    </div>
-    <div class="loader-line-wrap">
-      <div class="loader-line"></div>
-    </div>
-    <div class="loader-line-wrap">
-      <div class="loader-line"></div>
-    </div>
-    <div class="loader-line-wrap">
-      <div class="loader-line"></div>
-    </div>
-    <div class="loader-line-wrap">
-      <div class="loader-line"></div>
-    </div>
-  </div>
-</div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-10 col-sm-4 journey-form" data-controller="form">
-          <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
-
-            <%= f.input :start_address,
-            input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none text"},
-            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-
-            <%= f.input :end_address,
-            input_html: {data: {address_autocomplete_target: "start"}, class:"d-none text"},
-            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-
-
-            <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: '', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
-
-            <%= f.button :submit, class: "btn btn-outline-dark", id: "submitbtn", data: {form_target: "submit"} %>
-          <% end %>
+  <div class="machin">
+    <div class="loader-out sticky-top" data-controller="loading" >
+      <div class="loader d-none" data-loading-target="load">
+        <div class="text-center atxt opacity-100">
+          <span style="--i:1">G</span>
+          <span style="--i:2">e</span>
+          <span style="--i:3">n</span>
+          <span style="--i:4">e</span>
+          <span style="--i:5">r</span>
+          <span style="--i:6">a</span>
+          <span style="--i:7">t</span>
+          <span style="--i:8">i</span>
+          <span style="--i:9">n</span>
+          <span style="--i:10" class="space">g</span>
+          <span style="--i:11"> </span>
+          <span style="--i:12">I</span>
+          <span style="--i:13">m</span>
+          <span style="--i:14">a</span>
+          <span style="--i:15">g</span>
+          <span style="--i:16">e</span>
+        </div>
+        <div class="loader-inner">
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
+          <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <h1 class="galery-title text-anim">ART GALLERY</h1>
+        <div class="okboys">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-10 col-sm-4 journey-form" data-controller="form">
+                  <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
 
-    <div class="wrapper">
-      <% Itinerary.all.each do |itinerary| %>
-        <% if itinerary.image.key != nil %>
-          <div class="card">
-            <div class="card-img">
-              <%= cl_image_tag("#{itinerary.image.key}", alt: "image", class: "gallery-img") %>
-            </div>
-          </div>
-          <div class="info">
-            <div class="info1">
-              <h4><%= link_to "MY MESSES N° #{itinerary.id}", itinerary_path(itinerary)%></h4>
-              <p>From <%= itinerary.start_address %></p>
-              <p>To <%= itinerary.end_address %></p>
-            </div>
-            <div class="info2">
-              <p><%= itinerary.duration %></p>
-              <p><%= itinerary.mode.capitalize %></p>
+
+                    <%= f.input :start_address,
+                    input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
+                    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+
+                    <%= f.input :end_address,
+                    input_html: {data: {address_autocomplete_target: "start"}, class:"d-none"},
+                    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+
+
+
+                    <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: '', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
+
+                    <%= f.button :submit, class: "btn btn-outline-dark", id: "submitbtn", data: {form_target: "submit"} %>
+                  <% end %>
+                </div>
             </div>
           </div>
         </div>
-        <% else %>
-        <% end %>
-      <% end %>
     </div>
+  <h1 class="galery-title text-anim">ART GALLERY</h1>
+  <div class="wrapper">
+    <% Itinerary.all.each do |itinerary| %>
+      <% if itinerary.image.key != nil %>
+        <div class="card">
+          <div class="card-img">
+            <%= cl_image_tag("#{itinerary.image.key}", alt: "image", class: "gallery-img") %>
+          </div>
+        </div>
+        <div class="info">
+          <div class="info1">
+            <h4><%= link_to "MY MESSES N° #{itinerary.id}", itinerary_path(itinerary)%></h4>
+            <p>From <%= itinerary.start_address %></p>
+            <p>To <%= itinerary.end_address %></p>
+          </div>
+          <div class="info2">
+            <p><%= itinerary.duration %></p>
+            <p><%= itinerary.mode.capitalize %></p>
+          </div>
+        </div>
+      <% else %>
+      <% end %>
+    <% end %>
   </div>
-</div
+  </div>
+</div>
