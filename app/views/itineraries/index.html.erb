@@ -2,23 +2,22 @@
   <div class="text-start">
     <% @dis = [] %>
     <% current_user.itineraries.each do |itinerary| %>
-    <% @dis << itinerary.distance.gsub(/\D+/, '').to_i %>
+      <% @dis << itinerary.distance.gsub(/\D+/, '').to_i %>
     <% end %>
-
     <h1 class="text index-title">YOUR JOURNEYS <%= @dis.sum %>KM TOTAL</h1>
     <ul>
-    <% @mess = 0 %>
-      <% @itineraries.each do |itinerary| %>
-      <% if current_user != itinerary.user %>
-      <% else %>
-        <li class="li-item-index">
-          <div class="">
-            <% @mess += 1 %>
-            <h6 class="mess-title">MESS N° <%= @mess %></h6>
+      <% @mess = 0 %>
+        <% @itineraries.each do |itinerary| %>
+        <% if current_user != itinerary.user %>
+        <% else %>
+          <li class="li-item-index">
+            <div class="">
+              <% @mess += 1 %>
+              <h6 class="mess-title">MESS N° <%= @mess %></h6>
               <div class=" d-flex justify-content-between">
                 <div class="d-flex " data-controller="word-length">
-                <%= link_to "#{itinerary.start_address.capitalize.split.first.gsub(",", "")} to #{itinerary.end_address.capitalize.split.first.gsub(",", "")}",
-                itinerary_path(itinerary), class: "text-decoration-none list-itin", id: "address", "data-word-length-target" => "text" %>
+                  <%= link_to "#{itinerary.start_address.capitalize.split.first.gsub(",", "")} to #{itinerary.end_address.capitalize.split.first.gsub(",", "")}",
+                  itinerary_path(itinerary), class: "text-decoration-none list-itin", id: "address", "data-word-length-target" => "text" %>
                 </div>
                 <div class="d-flex justify-content-center">
                   <% case itinerary.mode %>
@@ -38,12 +37,12 @@
                 </div>
               </div>
             </div>
-        </li>
+          </li>
         <% end %>
       <% end %>
     </ul>
   </div>
-    <div class="text-center">
-      <%= link_to "BACK TO HOME", root_path, class: "btn btn-outline-dark"%>
-    </div>
+  <div class="text-center">
+    <%= link_to "BACK TO HOME", root_path, class: "btn btn-outline-dark"%>
+  </div>
 </div>

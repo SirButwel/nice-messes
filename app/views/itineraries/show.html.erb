@@ -1,12 +1,9 @@
 <div class= "container-show">
-<% content_for :head do %>
+  <% content_for :head do %>
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
-<% end %>
-
-
-
-<div class="img-container">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+  <% end %>
+  <div class="img-container">
     <div data-controller="sketch"
 
       data-sketch-start-longitude-value="<%= @itinerary.start_longitude %>"
@@ -16,9 +13,9 @@
       data-sketch-distance-value="<%= @itinerary.distance.gsub(/\D+/, '').to_i %>"
       data-sketch-duration-value="<%= @itinerary.duration_in_minutes %>"
       data-sketch-mode-value="<%= @itinerary.mode %>"
-      data-sketch-tmax-value="<%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>"
-    >
-    <div id="sketch-holder"></div>
+      data-sketch-tmax-value="<%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>">
+      <div id="sketch-holder">
+      </div>
       <div class= "test"><%= simple_form_for @itinerary,
         data: {sketch_target: "form"} do |f|%>
         <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
@@ -26,53 +23,76 @@
         <% end %>
       </div>
     </div>
-
-    <div>
-      <div class="title-parameter"><h1>PARAMETERS OF YOUR MESSY ART</h1></div>
-        <div class="sketch-parameters">
-          <ul class="list-unstyled ul-show">
-            <div class="d-flex justify-content-between"><li>Start longitude: </li><li><%= @itinerary.start_longitude %></li></div>
-            <div class="d-flex justify-content-between"><li>Start latitude:  </li><li><%= @itinerary.start_latitude %></li></div>
-            <div class="d-flex justify-content-between"><li>Temperature: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>°c</li></div>
-            <div class="d-flex justify-content-between"><li>Wind: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["gust10m"] %>km/h</li></div>
-            <div class="d-flex justify-content-between"><li>Rain probability: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["probarain"] %>%</li></div>
-            <div class="d-flex justify-content-between"><li>Travel time:  </li><li><%= @itinerary.duration_in_minutes %> min</li></div>
-            <div class="d-flex justify-content-between"><li>Distance:  </li><li><%= @itinerary.distance %></li></div>
-            <div class="d-flex justify-content-between"><li>Destination longitude:  </li><li><%= @itinerary.end_longitude %></li></div>
-            <div class="d-flex justify-content-between"><li>Destination latitude:  </li><li><%= @itinerary.end_latitude %></li></div>
-          </ul>
-        </div>
+  </div>
+  <div class="no-name">
+    <div class="title-parameter">
+      <h1>PARAMETERS OF YOUR MESSY ART</h1>
     </div>
-
-    <div class="text-itinerary">
-    <h1>YOUR ITINERARY</h1>
-
-    </div>
-
-    <div class="map-container">
-      <div class="map"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
-        data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
-        data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
-        data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
-        data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
-        data-map-mode-value="<%= @itinerary.mode %>">
+      <div class="sketch-parameters">
+        <ul class="list-unstyled ul-show">
+          <div class="d-flex justify-content-between">
+            <li>Start longitude: </li>
+            <li><%= @itinerary.start_longitude %></li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Start latitude:  </li>
+            <li><%= @itinerary.start_latitude %></li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Temperature: </li>
+            <li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>°c</li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Wind: </li>
+            <li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["gust10m"] %>km/h</li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Rain probability: </li>
+            <li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["probarain"] %>%</li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Travel time:  </li>
+            <li><%= @itinerary.duration_in_minutes %> min</li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Distance:  </li>
+            <li><%= @itinerary.distance %></li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Destination longitude:  </li>
+            <li><%= @itinerary.end_longitude %></li>
+          </div>
+          <div class="d-flex justify-content-between">
+            <li>Destination latitude:  </li>
+            <li><%= @itinerary.end_latitude %></li>
+          </div>
+        </ul>
       </div>
-    </div>
-
-    <div class="text-go"><h1>LET'S GOOOO</h1></div>
-
-    <div id="instructions" data-map-target="instructions">
-    </div>
-
-    <div class="remove d-flex">
-      <%= link_to "REMOVE MY TRIP",
-              itinerary_path(@itinerary),
-              data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-outline-dark remove"
-              %>
+  </div>
+  <div class="text-itinerary">
+    <h1>YOUR ITINERARY</h1>
+  </div>
+  <div class="map-container">
+    <div class="map"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>"
+      data-map-start-longitude-value="<%= @itinerary.start_longitude %>"
+      data-map-start-latitude-value="<%= @itinerary.start_latitude %>"
+      data-map-end-longitude-value="<%= @itinerary.end_longitude %>"
+      data-map-end-latitude-value="<%= @itinerary.end_latitude %>"
+      data-map-mode-value="<%= @itinerary.mode %>">
     </div>
   </div>
-</div>
+  <div class="text-go">
+    <h1>LET'S GOOOO</h1>
+  </div>
+  <div id="instructions" data-map-target="instructions">
+  </div>
+  <div class="remove d-flex">
+    <%= link_to "REMOVE MY TRIP",
+            itinerary_path(@itinerary),
+            data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-outline-dark remove"
+            %>
+  </div>
 </div>
