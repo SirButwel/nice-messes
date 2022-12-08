@@ -47,11 +47,11 @@
           <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
 
             <%= f.input :start_address,
-            input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
+            input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none text"},
             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
 
             <%= f.input :end_address,
-            input_html: {data: {address_autocomplete_target: "start"}, class:"d-none"},
+            input_html: {data: {address_autocomplete_target: "start"}, class:"d-none text"},
             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
 
 

@@ -9,8 +9,9 @@
   margin-top: 25px;
   border: 1px solid black;
   width: 89%;
+  font-size: large;
   h2 {
-    font-size: 25px;
+    font-size: 34px;
     font-weight: bold;
     margin-bottom: 30px;
     text-align: center;
@@ -19,6 +20,11 @@
     width: 100%;
     margin-bottom: 20px
   }
+}
+
+.form-label {
+  font-size: 22px;
+  font-style: normal;
 }
 
 .wrapper {
@@ -122,4 +128,8 @@ padding-left: 1rem;
 
 body[light-mode="dark"] .homepage{
   background-color: #383838;
-  }
+}
+
+#submitbtn {
+  font-size: 19px;
+}
