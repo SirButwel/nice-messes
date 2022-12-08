@@ -32,6 +32,7 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 30px;
   padding-top: 1rem;
+  padding-bottom: 0;
 }
 
 .gallery-img {
@@ -77,10 +78,18 @@ h1 {
 }
 
 .info {
-  display: flex;
+  //display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 6px 50px;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  padding-bottom: 2rem;
+  padding-top: 0;
+  line-height: 10px;
+  .info1{
+    display: flex;
+    justify-content: space-between;
+  }
   .info2 {
     font-weight: bold;
   }
