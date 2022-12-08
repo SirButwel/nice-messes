@@ -52,6 +52,6 @@ class ItinerariesController < ApplicationController
 
   def itinerary_params
     params.require(:itinerary).permit(:start_address, :end_address, :start_latitude, :start_longitude, :end_latitude,
-                                      :end_longitude, :distance, :duration, :image_url)
+                                      :end_longitude, :distance, :duration, :image_url, :weather_data)
   end
 end
