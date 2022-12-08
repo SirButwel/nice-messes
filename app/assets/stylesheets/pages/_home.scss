@@ -117,3 +117,7 @@ margin-bottom: 1px;
 .homepage {
   background-color: white;
 }
+
+body[light-mode="dark"] .homepage{
+  background-color: #383838;
+  }
