@@ -44,59 +44,43 @@
   </div>
 <div>
 </div>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-10 col-sm-4 journey-form" data-controller="form">
-        <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10 col-sm-4 journey-form" data-controller="form">
+          <%= simple_form_for @itinerary, data: {turbo_method: false, action: "submit->loading#goload"} do |f| %>
 
-          <%= f.input :start_address,
-          input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
-          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+            <%= f.input :start_address,
+            input_html: {data: {address_autocomplete_target: "start", action: "input->form#revealEndInput"}, class:"d-none"},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
 
-          <%= f.input :end_address,
-          input_html: {data: {address_autocomplete_target: "start"}, class:"d-none"},
-          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+            <%= f.input :end_address,
+            input_html: {data: {address_autocomplete_target: "start"}, class:"d-none"},
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
 
 
-          <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: '', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
+            <%= f.input :mode, collection: [["Driving", 0], ["Bicycling", 1], ["Walking", 2]],  prompt: "Select your transportation method",  wrapper_html: { class: '', id:'list', data: {form_target: "mode"}}, input_html: {data: {action: "click->form#submit"}} %>
 
-          <%= f.button :submit, class: "btn btn-outline-dark", id: "submitbtn", data: {form_target: "submit"} %>
-        <% end %>
+            <%= f.button :submit, class: "btn btn-outline-dark", id: "submitbtn", data: {form_target: "submit"} %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+
   </div>
   </div>
     <h1 class="galery-title text-anim">ART GALLERY</h1>
-
     <div class="wrapper">
       <% Itinerary.all.each do |itinerary| %>
-
         <% if itinerary.image.key != nil %>
           <div class="card">
             <div class="card-img">
               <%= cl_image_tag("#{itinerary.image.key}", alt: "image", class: "gallery-img") %>
             </div>
-            <div class="card-img-overlay">
-               <div>
-                <div class="display-item top-item"><%= link_to "Journey from #{itinerary.start_address}", itinerary_path(itinerary) %></div>
-                <div class="display-item">Trip Duration: <%= itinerary.duration %></div>
-                <div class="display-item">Distance: <%= itinerary.distance %></div>
-                <div class="display-item">Temperature Range: <%= itinerary.weather_data.split(",").select {|e| e.include?("tmin")}.first.split("=>").last%> -
-                  <%= itinerary.weather_data.split(",").select {|e| e.include?("tmax")}.first.split("=>").last %> °C
-                </div>
-                <div class="display-item">Means of Transport: <% if itinerary.mode %>
-                <%= itinerary.mode.capitalize %>
-                <% else %>
-                <% end %>
-                </div>
-              <div class="display-item top-item"><%= link_to "To #{itinerary.end_address}", itinerary_path(itinerary) %></div>
-              </div>
-            </div>
-
           </div>
           <div class="info">
             <div class="info1">
-              <h4>MY MESSES N°<%= itinerary.id %></h4>
+              <h4><%= link_to "MY MESSES N° #{itinerary.id}", itinerary_path(itinerary)%></h4>
               <p>From <%= itinerary.start_address %></p>
               <p>To <%= itinerary.end_address %></p>
             </div>
@@ -109,7 +93,6 @@
         <% else %>
         <% end %>
       <% end %>
-
     </div>
   </div>
 </div
