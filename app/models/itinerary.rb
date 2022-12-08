@@ -16,7 +16,7 @@ class Itinerary < ApplicationRecord
   validates :start_address, presence: true
   validates :end_address, presence: true
   # validates :mode, presence: true
-  # after_validation :get_insee_code
+  after_validation :get_insee_code
 
   def duration_in_minutes
     duration_hash = duration.split.reverse.each_slice(2).to_h
