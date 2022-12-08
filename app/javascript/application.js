@@ -15,7 +15,7 @@ sr.reveal('.card', {
   scale: 0.9,
 }, 200)
 
-sr.reveal('.text-center', {
+sr.reveal('.text-anim', {
   duration: 1500,
   delay: 200,
   origin: 'top',
