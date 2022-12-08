@@ -33,7 +33,9 @@
           <ul class="list-unstyled">
             <div class="d-flex justify-content-between"><li>Start longitude: </li><li><%= @itinerary.start_longitude %></li></div>
             <div class="d-flex justify-content-between"><li>Start latitude:  </li><li><%= @itinerary.start_latitude %></li></div>
-            <div class="d-flex justify-content-between"><li>Destination weather: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>°c</li></div>
+            <div class="d-flex justify-content-between"><li>Temperature: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["tmax"] %>°c</li></div>
+            <div class="d-flex justify-content-between"><li>Wind: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["gust10m"] %>km/h</li></div>
+            <div class="d-flex justify-content-between"><li>Rain probability: </li><li><%= (JSON.parse @itinerary.weather_data.gsub('=>', ':'))["probarain"] %>%</li></div>
             <div class="d-flex justify-content-between"><li>Travel time:  </li><li><%= @itinerary.duration_in_minutes %> min</li></div>
             <div class="d-flex justify-content-between"><li>Distance:  </li><li><%= @itinerary.distance %></li></div>
             <div class="d-flex justify-content-between"><li>Destination longitude:  </li><li><%= @itinerary.end_longitude %></li></div>
@@ -43,7 +45,7 @@
     </div>
 
     <div>
-    <h2>YOUR ITINERARY</h2>
+    <h2 class="your-itinerary">YOUR ITINERARY</h2>
     </div>
 
     <div class="map-container">
@@ -73,3 +75,7 @@
   </div>
 </div>
 </div>
+
+
+
+<% console %>
