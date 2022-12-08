@@ -1,6 +1,7 @@
 .itinerary-main {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: white;
 }
 
 .li-item-index {
@@ -18,10 +19,7 @@
 }
 
 .list-banner {
-  // background-color: white;
   border: 1px none black;
-  border-radius: 5px;
-  padding: 10px;
 }
 
 .list-itin {
@@ -29,5 +27,17 @@
 }
 
 .mess-title {
-  padding-left: 23px;
+  padding-left: 0px;
+}
+.text {
+  text-align: left;
+  margin-bottom: 1px;
+  font-size: 35px;
+  margin-left: 0.7rem;
+
+}
+
+ul {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }

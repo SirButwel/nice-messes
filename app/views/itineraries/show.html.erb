@@ -22,13 +22,13 @@
       <div class= "test"><%= simple_form_for @itinerary,
         data: {sketch_target: "form"} do |f|%>
         <%= hidden_field_tag :image_blob, nil, data: {sketch_target: "imageInput"}  %>
-        <%= f.button :submit, "SAVE MY MESS", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-secondary" %>
+        <%= f.button :submit, "SAVE MY MESS", data: {action: "click->sketch#canvasSave"}, class: "btn btn-outline-dark" %>
         <% end %>
       </div>
     </div>
 
     <div>
-      <h2>PARAMETERS OF YOUR MESSY ART</h2>
+      <div class="title-parameter"><h1>PARAMETERS OF YOUR MESSY ART</h1></div>
         <div class="sketch-parameters">
           <ul class="list-unstyled">
             <div class="d-flex justify-content-between"><li>Start longitude: </li><li><%= @itinerary.start_longitude %></li></div>
@@ -42,8 +42,8 @@
         </div>
     </div>
 
-    <div>
-    <h2>YOUR ITINERARY</h2>
+    <div class="text-itinerary">
+    <h1>YOUR ITINERARY</h1>
     </div>
 
     <div class="map-container">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <h2>LET'S GET YOUR ASS MOVING</h2>
+    <div class="text-go"><h1>LET'S GOOOO</h1></div>
 
     <div id="instructions" data-map-target="instructions">
     </div>
@@ -67,7 +67,7 @@
     <div class="remove d-flex">
       <%= link_to "REMOVE MY TRIP",
               itinerary_path(@itinerary),
-              data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-outline-secondary remove"
+              data: {turbo_method: :delete, turbo_confirm: "Delete #{@itinerary.start_address} - #{@itinerary.end_address}?"}, class:"btn btn-outline-dark remove"
               %>
     </div>
   </div>

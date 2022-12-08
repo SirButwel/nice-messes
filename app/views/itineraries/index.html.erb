@@ -1,26 +1,26 @@
 <div class="container itinerary-main">
   <div class="text-start">
-    <h1 class="text-center index-title">Your Journeys</h1>
     <% @dis = [] %>
     <% current_user.itineraries.each do |itinerary| %>
     <% @dis << itinerary.distance.gsub(/\D+/, '').to_i %>
     <% end %>
-    <h2 class="text-center"><%= @dis.sum %> km total !</h2>
+
+    <h1 class="text index-title">YOUR JOURNEYS <%= @dis.sum %>KM TOTAL</h1>
     <ul>
     <% @mess = 0 %>
       <% @itineraries.each do |itinerary| %>
       <% if current_user != itinerary.user %>
       <% else %>
         <li class="li-item-index">
-          <div class="container">
+          <div class="">
             <% @mess += 1 %>
             <h6 class="mess-title">MESS N° <%= @mess %></h6>
-              <div class="container d-flex justify-content-between">
-                <div class="d-flex container" data-controller="word-length">
+              <div class=" d-flex justify-content-between">
+                <div class="d-flex " data-controller="word-length">
                 <%= link_to "#{itinerary.start_address.capitalize.split.first.gsub(",", "")} to #{itinerary.end_address.capitalize.split.first.gsub(",", "")}",
                 itinerary_path(itinerary), class: "text-decoration-none list-itin", id: "address", "data-word-length-target" => "text" %>
                 </div>
-                <div class="d-flex container justify-content-center">
+                <div class="d-flex justify-content-center">
                   <% case itinerary.mode %>
                   <% when "driving"%>
                     <i class="fa-solid fa-car-side"></i>
@@ -30,10 +30,10 @@
                     <i class="fa-solid fa-bicycle"></i>
                   <% end %>
                 </div>
-                <div class="d-flex container justify-content-end">
+                <div class="d-flex justify-content-end">
                   <%= link_to "DELETE",
                     itinerary_path(itinerary),
-                    data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-secondary ml-auto"
+                    data: {turbo_method: :delete, turbo_confirm: "Delete #{itinerary.start_address} - #{itinerary.end_address}?"}, class:"btn btn-outline-dark"
                     %>
                 </div>
               </div>
@@ -44,6 +44,6 @@
     </ul>
   </div>
     <div class="text-center">
-      <%= link_to "back to home", root_path, class: "btn btn-secondary"%>
+      <%= link_to "BACK TO HOME", root_path, class: "btn btn-outline-dark"%>
     </div>
 </div>
