@@ -26,9 +26,32 @@ export default class extends Controller {
     this.start = [this.startLongitudeValue, this.startLatitudeValue];
     this.end = [this.endLongitudeValue, this.endLatitudeValue];
 
+    let x = 0;
+    let xx = 0;
+    let y = 0;
+    let yy = 0;
+
+    if (this.startLongitudeValue < this.endLongitudeValue){
+      x = this.startLongitudeValue - ((this.endLongitudeValue - this.startLongitudeValue) * 0.2 );
+      xx = this.endLongitudeValue + ((this.endLongitudeValue - this.startLongitudeValue) * 0.2 );
+    }
+    else {
+      x = this.startLongitudeValue + ((this.startLongitudeValue - this.endLongitudeValue) * 0.2 );
+      xx = this.endLongitudeValue - ((this.startLongitudeValue - this.endLongitudeValue) * 0.2 );
+    }
+
+    if (this.startLatitudeValue < this.endLatitudeValue){
+      y = this.startLatitudeValue - ((this.endLatitudeValue - this.startLatitudeValue) * 0.2);
+      yy = this.endLatitudeValue + ((this.endLatitudeValue - this.startLatitudeValue) * 0.2);
+    }
+    else {
+      y = this.startLatitudeValue + ((this.startLatitudeValue - this.endLatitudeValue) * 0.2);
+      yy = this.endLatitudeValue - ((this.startLatitudeValue - this.endLatitudeValue) * 0.2);
+    }
     const bounds = [
-      [this.startLongitudeValue, this.startLatitudeValue],
-      [this.endLongitudeValue, this.endLatitudeValue]
+
+      [x, y],
+      [xx, yy]
     ];
     this.map.fitBounds(bounds);
 
